@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 27
@@ -25,7 +25,18 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    // Support lib
     implementation 'com.android.support:appcompat-v7:27.0.2'
+    implementation "android.arch.lifecycle:extensions:1.0.0"
+    // Injection
+    implementation 'com.google.dagger:dagger:2.13'
+    kapt 'com.google.dagger:dagger-compiler:2.13'
+    // Networking
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    // Logging
+    implementation 'com.jakewharton.timber:timber:4.6.0'
+    // Testing
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
