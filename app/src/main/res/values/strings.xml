@@ -1,8 +1,13 @@
 <resources>
     <!-- app info -->
-    <string name="app_name">HueBoat</string>
+    <string name="app_name">Hue Boat</string>
     <string name="shared_pref_name">HueBoatSharedPrefs</string>
     <string name="hue_sdk">huesdk</string>
     <string name="hue_sdk_location">persistence</string>
+    <!-- main activity -->
+    <string name="title_activity_main">Dashboard</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_settings">Settings</string>
     <!-- helper -->
 </resources>
