@@ -1,4 +1,8 @@
 <resources>
+    <!-- app info -->
     <string name="app_name">HueBoat</string>
     <string name="shared_pref_name">HueBoatSharedPrefs</string>
+    <string name="hue_sdk">huesdk</string>
+    <string name="hue_sdk_location">persistence</string>
+    <!-- helper -->
 </resources>

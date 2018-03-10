@@ -18,12 +18,11 @@ import dagger.android.support.HasSupportFragmentInjector
  */
 class AppInjector {
     companion object {
-        fun init(etracApplication: HueBoatApp) {
+        fun init(app: HueBoatApp) {
             DaggerAppComponent.builder()
-                .application(etracApplication)
-                .build().inject(etracApplication)
-            etracApplication
-                .registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
+                .application(app)
+                .build().inject(app)
+            app.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
                     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
                         handleActivity(activity)
                     }
