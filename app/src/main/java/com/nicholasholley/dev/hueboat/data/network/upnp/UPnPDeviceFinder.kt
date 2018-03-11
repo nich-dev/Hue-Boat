@@ -1,4 +1,4 @@
-package com.nicholasholley.dev.hueboat.data.network
+package com.nicholasholley.dev.hueboat.data.network.upnp
 
 /*
  * Copyright (C) 2015 Doug Melton
@@ -27,10 +27,7 @@ import java.util.Collections
 import java.util.regex.Pattern
 import com.nicholasholley.dev.hueboat.util.log.Log
 
-import org.reactivestreams.Subscriber
-
 import io.reactivex.Observable
-import io.reactivex.ObservableEmitter
 import io.reactivex.ObservableOnSubscribe
 
 /**
@@ -48,7 +45,7 @@ class UPnPDeviceFinder @JvmOverloads constructor(IPV4: Boolean = true) {
 
     init {
         mInetDeviceAdr = getDeviceLocalIP(IPV4)
-        Log.e(TAG, "IP is: " + mInetDeviceAdr!!)
+        Log.d(TAG, "IP is: " + mInetDeviceAdr!!)
 
         try {
             mSock = UPnPSocket(mInetDeviceAdr)
@@ -76,11 +73,11 @@ class UPnPDeviceFinder @JvmOverloads constructor(IPV4: Boolean = true) {
 
                 // Listen to responses from network until the socket timeout
                 while (true) {
-                    Log.e(TAG, "wait for dev. response")
+                    Log.d(TAG, "wait for dev. response")
                     val dp = mSock!!.receiveMulticastMsg()
                     var receivedString = String(dp.data)
                     receivedString = receivedString.substring(0, dp.length)
-                    Log.e(TAG, "found dev: " + receivedString)
+                    Log.d(TAG, "found dev: " + receivedString)
                     val device = UPnPDevice.getInstance(receivedString)
                     if (device != null) {
                         emitter.onNext(device)
@@ -88,7 +85,7 @@ class UPnPDeviceFinder @JvmOverloads constructor(IPV4: Boolean = true) {
                 }
             } catch (e: IOException) {
                 //sock timeout will get us out of the loop
-                Log.e(TAG, "time out")
+                Log.d(TAG, "time out")
                 mSock!!.close()
                 emitter.onComplete()
             }
@@ -107,7 +104,7 @@ class UPnPDeviceFinder @JvmOverloads constructor(IPV4: Boolean = true) {
         private val mMultiSocket: MulticastSocket?
 
         init {
-            Log.e(TAG, "UPnPSocket")
+            Log.d(TAG, "UPnPSocket")
 
             mMulticastGroup = InetSocketAddress(MULTICAST_ADDRESS, PORT)
             mMultiSocket = MulticastSocket(InetSocketAddress(deviceIp, 0))
@@ -119,7 +116,7 @@ class UPnPDeviceFinder @JvmOverloads constructor(IPV4: Boolean = true) {
         fun sendMulticastMsg() {
             val ssdpMsg = buildSSDPSearchString()
 
-            Log.e(TAG, "sendMulticastMsg: " + ssdpMsg)
+            Log.d(TAG, "sendMulticastMsg: " + ssdpMsg)
 
             val dp = DatagramPacket(ssdpMsg.toByteArray(), ssdpMsg.length, mMulticastGroup)
             mMultiSocket!!.send(dp)
@@ -168,19 +165,19 @@ class UPnPDeviceFinder @JvmOverloads constructor(IPV4: Boolean = true) {
             val content = StringBuilder()
 
             content.append("M-SEARCH * HTTP/1.1").append(NEWLINE)
-            content.append("Host: $MULTICAST_ADDRESS:$PORT").append(NEWLINE)
+            content.append("Host: ${MULTICAST_ADDRESS}:${PORT}").append(NEWLINE)
             content.append("Man:\"ssdp:discover\"").append(NEWLINE)
             content.append("MX: " + MAX_REPLY_TIME).append(NEWLINE)
             content.append("ST: upnp:rootdevice").append(NEWLINE)
             content.append(NEWLINE)
 
-            Log.e(TAG, content.toString())
+            Log.d(TAG, content.toString())
 
             return content.toString()
         }
 
         private fun getDeviceLocalIP(useIPv4: Boolean): InetAddress? {
-            Log.e(TAG, "getDeviceLocalIP")
+            Log.d(TAG, "getDeviceLocalIP")
 
             try {
                 val interfaces = Collections.list(NetworkInterface.getNetworkInterfaces())
@@ -188,17 +185,17 @@ class UPnPDeviceFinder @JvmOverloads constructor(IPV4: Boolean = true) {
                     val addrs = Collections.list(intf.inetAddresses)
                     for (addr in addrs) {
                         if (!addr.isLoopbackAddress) {
-                            Log.e(TAG, "IP from inet is: " + addr)
+                            Log.d(TAG, "IP from inet is: " + addr)
                             val sAddr = addr.hostAddress.toUpperCase()
                             val isIPv4 = isIPv4Address(sAddr)
                             if (useIPv4) {
                                 if (isIPv4) {
-                                    Log.e(TAG, "IP v4")
+                                    Log.d(TAG, "IP v4")
                                     return addr
                                 }
                             } else {
                                 if (!isIPv4) {
-                                    Log.e(TAG, "IP v6")
+                                    Log.d(TAG, "IP v6")
                                     //int delim = sAddr.indexOf('%'); // drop ip6 port suffix
                                     //return delim<0 ? sAddr : sAddr.substring(0, delim);
                                     return addr

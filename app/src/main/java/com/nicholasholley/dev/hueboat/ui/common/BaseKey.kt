@@ -3,6 +3,7 @@ package com.nicholasholley.dev.hueboat.ui.common
 import android.os.Bundle
 import com.nicholasholley.dev.hueboat.R
 import com.nicholasholley.dev.hueboat.ui.common.BaseFragment
+import com.nicholasholley.dev.hueboat.util.Constants
 import paperparcel.PaperParcelable
 
 abstract class BaseKey: PaperParcelable {
@@ -15,7 +16,7 @@ abstract class BaseKey: PaperParcelable {
         if (bundle == null) {
             bundle = Bundle()
         }
-        bundle.putParcelable(fragment.resources.getString(R.string.navigation_key), this)
+        bundle.putParcelable(Constants.NAV_KEY, this)
         fragment.arguments = bundle
         return fragment
     }

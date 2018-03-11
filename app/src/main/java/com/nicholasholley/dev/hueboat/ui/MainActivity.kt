@@ -10,6 +10,7 @@ import android.support.design.widget.CollapsingToolbarLayout
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import com.nicholasholley.dev.hueboat.R
+import com.nicholasholley.dev.hueboat.ui.discovery.DiscoveryKey
 import com.zhuinden.simplestack.BackstackDelegate
 import com.zhuinden.simplestack.HistoryBuilder
 import com.zhuinden.simplestack.StateChange
@@ -40,6 +41,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector, StateChang
             }
             R.id.navigation_dashboard -> {
                 message.setText(R.string.title_dashboard)
+                navigateTo(DiscoveryKey)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
@@ -53,6 +55,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector, StateChang
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setupBackstack(savedInstanceState)
 
         navigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
     }
@@ -66,6 +69,16 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector, StateChang
     /***
      * Handle global navigation actions
      */
+    fun setupBackstack(savedInstanceState: Bundle?) {
+        backstackDelegate.onCreate(
+                savedInstanceState,
+                lastCustomNonConfigurationInstance,
+                arrayListOf(DiscoveryKey)
+        )
+        backstackDelegate.registerForLifecycleCallbacks(this)
+        backstackDelegate.setStateChanger(this)
+    }
+
     override fun handleStateChange(stateChange: StateChange, completionCallback: StateChanger.Callback) {
         if (stateChange.topNewState<Any>() == stateChange.topPreviousState<Any>()) {
             completionCallback.stateChangeComplete()

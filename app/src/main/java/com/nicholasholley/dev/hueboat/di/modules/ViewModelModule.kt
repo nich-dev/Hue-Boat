@@ -3,6 +3,7 @@ package com.dukeenergy.etrac.di.modules
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import com.dukeenergy.etrac.di.ViewModelFactory
+import com.nicholasholley.dev.hueboat.ui.MainVM
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -13,13 +14,10 @@ import dagger.multibindings.IntoMap
 
 @Module
 abstract class ViewModelModule {
-    /***
     @Binds
     @IntoMap
-    @ViewModelMap(VMExample::class)
-    abstract fun bindVMExample(vm: VMExample): ViewModel
-    */
-
+    @ViewModelMap(MainVM::class)
+    abstract fun bindMainVM(vm: MainVM): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory

@@ -1,4 +1,4 @@
-package com.nicholasholley.dev.hueboat.data.network
+package com.nicholasholley.dev.hueboat.data.network.upnp
 
 /*
  * Copyright (C) 2015 Doug Melton
@@ -22,12 +22,9 @@ import java.net.InetAddress
 import java.net.MalformedURLException
 import java.net.URL
 import java.net.UnknownHostException
-import java.util.Comparator
 import java.util.HashMap
 
-import javax.xml.parsers.DocumentBuilder
 import javax.xml.parsers.DocumentBuilderFactory
-import javax.xml.xpath.XPath
 import javax.xml.xpath.XPathFactory
 
 import org.w3c.dom.Document
@@ -38,7 +35,6 @@ import android.text.TextUtils
 
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import okhttp3.Response
 
 /**
  * Based on:

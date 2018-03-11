@@ -10,5 +10,4 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_settings">Settings</string>
     <!-- helper -->
-    <string name="navigation_key">hue.nav.key</string>
 </resources>
