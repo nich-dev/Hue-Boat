@@ -1,27 +1,32 @@
 package com.nicholasholley.dev.hueboat.data.models
 
+import com.google.gson.annotations.Expose
 import io.realm.RealmObject
+import io.realm.RealmResults
+import io.realm.annotations.LinkingObjects
 import io.realm.annotations.PrimaryKey
 
 class HueConfig(
-        @PrimaryKey var id: Long = 0L,
-        var name: String? = null,
-        var apiversion: String? = null,
-        var swversion: String? = null,
-        var proxyaddress: String? = null,
-        var ipaddress: String? = null,
-        var mac: String? = null,
-        var netmask: String? = null,
-        var gateway: String? = null,
-        var UTC: String? = null,
-        var localtime: String? = null,
-        var timezone: String? = null,
-        var modelid: String? = null,
-        var bridgeid: String? = null,
-        var replacesbridgeid: String? = null,
-        var datastoreversion: String? = null,
-        var starterkitid: String? = null,
-        var proxyport: Int? = null,
-        var zigbeechannel: Int? = null,
-        var factorynew: Boolean? = null
+        @PrimaryKey var id:             Long = 0L,
+        @Expose var name:               String? = null,
+        @Expose var apiversion:         String? = null,
+        @Expose var swversion:          String? = null,
+        @Expose var proxyaddress:       String? = null,
+        @Expose var ipaddress:          String? = null,
+        @Expose var mac:                String? = null,
+        @Expose var netmask:            String? = null,
+        @Expose var gateway:            String? = null,
+        @Expose var UTC:                String? = null,
+        @Expose var localtime:          String? = null,
+        @Expose var timezone:           String? = null,
+        @Expose var modelid:            String? = null,
+        @Expose var bridgeid:           String? = null,
+        @Expose var replacesbridgeid:   String? = null,
+        @Expose var datastoreversion:   String? = null,
+        @Expose var starterkitid:       String? = null,
+        @Expose var proxyport:          Int? = null,
+        @Expose var zigbeechannel:      Int? = null,
+        @Expose var factorynew:         Boolean? = null,
+        @LinkingObjects("config")
+                val bridges:            RealmResults<HueBridge>? = null
 ): RealmObject()

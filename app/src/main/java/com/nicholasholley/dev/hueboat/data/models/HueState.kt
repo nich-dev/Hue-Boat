@@ -1,22 +1,24 @@
 package com.nicholasholley.dev.hueboat.data.models
 
+import com.google.gson.annotations.Expose
+import io.realm.RealmList
 import io.realm.RealmObject
 import io.realm.RealmResults
 import io.realm.annotations.LinkingObjects
 import io.realm.annotations.PrimaryKey
 
 class HueState(
-        @PrimaryKey var id: Long = 0L,
-        var on: Boolean = false,
-        var reachable: Boolean = false,
-        var bri: Int = 1,
-        var hue: Int = 0,
-        var sat: Int = 0,
-        var ct: Int = 0,
-        var xy: List<Double>? = null,
-        var alert: String? = null,
-        var effect: String? = null,
-        var colormode: String? = null,
+        @PrimaryKey var id:         Long = 0L,
+        @Expose var on:             Boolean = false,
+        @Expose var reachable:      Boolean = false,
+        @Expose var bri:            Int = 1,
+        @Expose var hue:            Int = 0,
+        @Expose var sat:            Int = 0,
+        @Expose var ct:             Int = 0,
+        @Expose var xy:             RealmList<Double>? = RealmList(),
+        @Expose var alert:          String? = null,
+        @Expose var effect:         String? = null,
+        @Expose var colormode:      String? = null,
         @LinkingObjects("state")
-        val lights: RealmResults<HueLight>? = null
+                val lights:         RealmResults<HueLight>? = null
 ): RealmObject()
