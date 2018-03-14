@@ -14,6 +14,7 @@ class HueGroup(
         @Expose     var category:   String? = null,
         @Expose     var modelid:    String? = null,
         @Expose     var uniqueid:   String? = null,
+        @Expose     var action:     HueAction? = null,
         @SerializedName("lights")
         @Expose     var lightIds:   RealmList<String> = RealmList(),
                     var lights:     RealmList<HueLight> = RealmList()
