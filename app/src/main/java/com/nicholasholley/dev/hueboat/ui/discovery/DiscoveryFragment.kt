@@ -53,8 +53,18 @@ class DiscoveryFragment: BaseFragment(), MarkForInjection {
     override fun bindToVM() {
         UPnPDeviceFinder().observe()
                 .subscribeOn(Schedulers.io())
+                .filter {
+                    try {
+                        it.downloadSpecs()
+                        Log.d(it.host)
+                    } catch (e: Exception) {
+                        Log.d(e.message ?: "Didnt dl specs")
+                    }
+                    true
+                }
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
+                    Log.d("doin a subscribe-boi")
                     if (uPnPAdapter.getItemCount() == 0) {
                         spinnyBoi?.animate()
                                 ?.alpha(0f)

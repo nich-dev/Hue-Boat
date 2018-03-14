@@ -39,13 +39,13 @@ import io.reactivex.ObservableOnSubscribe
  */
 class UPnPDeviceFinder @JvmOverloads constructor(IPV4: Boolean = true) {
 
-    private val mInetDeviceAdr: InetAddress?
+    private val mInetDeviceAdr: InetAddress
 
     private var mSock: UPnPSocket? = null
 
     init {
-        mInetDeviceAdr = getDeviceLocalIP(IPV4)
-        Log.d(TAG, "IP is: " + mInetDeviceAdr!!)
+        mInetDeviceAdr = getDeviceLocalIP(IPV4)!!
+        Log.d("IP is: " + mInetDeviceAdr!!)
 
         try {
             mSock = UPnPSocket(mInetDeviceAdr)
@@ -73,11 +73,11 @@ class UPnPDeviceFinder @JvmOverloads constructor(IPV4: Boolean = true) {
 
                 // Listen to responses from network until the socket timeout
                 while (true) {
-                    Log.d(TAG, "wait for dev. response")
+                    Log.d("wait for dev. response")
                     val dp = mSock!!.receiveMulticastMsg()
                     var receivedString = String(dp.data)
                     receivedString = receivedString.substring(0, dp.length)
-                    Log.d(TAG, "found dev: " + receivedString)
+                    Log.d("found dev: " + receivedString)
                     val device = UPnPDevice.getInstance(receivedString)
                     if (device != null) {
                         emitter.onNext(device)
@@ -85,7 +85,7 @@ class UPnPDeviceFinder @JvmOverloads constructor(IPV4: Boolean = true) {
                 }
             } catch (e: IOException) {
                 //sock timeout will get us out of the loop
-                Log.d(TAG, "time out")
+                Log.d("time out")
                 mSock!!.close()
                 emitter.onComplete()
             }
@@ -116,7 +116,7 @@ class UPnPDeviceFinder @JvmOverloads constructor(IPV4: Boolean = true) {
         fun sendMulticastMsg() {
             val ssdpMsg = buildSSDPSearchString()
 
-            Log.d(TAG, "sendMulticastMsg: " + ssdpMsg)
+            Log.d("sendMulticastMsg: " + ssdpMsg)
 
             val dp = DatagramPacket(ssdpMsg.toByteArray(), ssdpMsg.length, mMulticastGroup)
             mMultiSocket!!.send(dp)
@@ -177,7 +177,7 @@ class UPnPDeviceFinder @JvmOverloads constructor(IPV4: Boolean = true) {
         }
 
         private fun getDeviceLocalIP(useIPv4: Boolean): InetAddress? {
-            Log.d(TAG, "getDeviceLocalIP")
+            Log.d("getDeviceLocalIP")
 
             try {
                 val interfaces = Collections.list(NetworkInterface.getNetworkInterfaces())
@@ -185,17 +185,17 @@ class UPnPDeviceFinder @JvmOverloads constructor(IPV4: Boolean = true) {
                     val addrs = Collections.list(intf.inetAddresses)
                     for (addr in addrs) {
                         if (!addr.isLoopbackAddress) {
-                            Log.d(TAG, "IP from inet is: " + addr)
+                            Log.d("IP from inet is: " + addr)
                             val sAddr = addr.hostAddress.toUpperCase()
                             val isIPv4 = isIPv4Address(sAddr)
                             if (useIPv4) {
                                 if (isIPv4) {
-                                    Log.d(TAG, "IP v4")
+                                    Log.d("IP v4")
                                     return addr
                                 }
                             } else {
                                 if (!isIPv4) {
-                                    Log.d(TAG, "IP v6")
+                                    Log.d("IP v6")
                                     //int delim = sAddr.indexOf('%'); // drop ip6 port suffix
                                     //return delim<0 ? sAddr : sAddr.substring(0, delim);
                                     return addr
@@ -205,6 +205,7 @@ class UPnPDeviceFinder @JvmOverloads constructor(IPV4: Boolean = true) {
                     }
                 }
             } catch (ex: Exception) {
+                Log.d(ex.message ?: "busted")
             }
             // for now eat exceptions
             return null
