@@ -36,6 +36,8 @@ import io.reactivex.ObservableOnSubscribe
  *
  * Which is based on:
  * https://github.com/heb-dtc/SSDPDiscovery/blob/master/src/main/java/com/flo/upnpdevicedetector/UPnPDeviceFinder.java
+ *
+ * This class will find all UPnP devices with a response code of "IpBridge" as specified by the philips hue api guide
  */
 class UPnPDeviceFinder @JvmOverloads constructor(IPV4: Boolean = true) {
 
@@ -78,9 +80,11 @@ class UPnPDeviceFinder @JvmOverloads constructor(IPV4: Boolean = true) {
                     var receivedString = String(dp.data)
                     receivedString = receivedString.substring(0, dp.length)
                     Log.d("found dev: " + receivedString)
-                    val device = UPnPDevice.getInstance(receivedString)
-                    if (device != null) {
-                        emitter.onNext(device)
+                    if (receivedString.contains("IpBridge", true)){
+                        val device = UPnPDevice.getInstance(receivedString)
+                        if (device != null) {
+                            emitter.onNext(device)
+                        }
                     }
                 }
             } catch (e: IOException) {
@@ -101,15 +105,15 @@ class UPnPDeviceFinder @JvmOverloads constructor(IPV4: Boolean = true) {
     internal constructor(deviceIp: InetAddress) {
 
         private val mMulticastGroup: SocketAddress
-        private val mMultiSocket: MulticastSocket?
+        private val mMultiSocket: MulticastSocket
 
         init {
-            Log.d(TAG, "UPnPSocket")
+            Log.d("UPnPSocket")
 
             mMulticastGroup = InetSocketAddress(MULTICAST_ADDRESS, PORT)
             mMultiSocket = MulticastSocket(InetSocketAddress(deviceIp, 0))
 
-            mMultiSocket!!.soTimeout = MSG_TIMEOUT
+            mMultiSocket.soTimeout = MSG_TIMEOUT
         }
 
         @Throws(IOException::class)
@@ -119,16 +123,16 @@ class UPnPDeviceFinder @JvmOverloads constructor(IPV4: Boolean = true) {
             Log.d("sendMulticastMsg: " + ssdpMsg)
 
             val dp = DatagramPacket(ssdpMsg.toByteArray(), ssdpMsg.length, mMulticastGroup)
-            mMultiSocket!!.send(dp)
+            mMultiSocket.send(dp)
         }
 
         @Throws(IOException::class)
         fun receiveMulticastMsg(): DatagramPacket {
+            Log.d("receiveMulticastMsg")
             val buf = ByteArray(2048)
             val dp = DatagramPacket(buf, buf.size)
 
-            mMultiSocket!!.receive(dp)
-
+            mMultiSocket.receive(dp)
             return dp
         }
 
@@ -136,18 +140,11 @@ class UPnPDeviceFinder @JvmOverloads constructor(IPV4: Boolean = true) {
          * Closing the Socket.
          */
         fun close() {
-            mMultiSocket?.close()
-        }
-
-        companion object {
-            private val TAG = UPnPSocket::class.java.name
+            mMultiSocket.close()
         }
     }
 
     companion object {
-
-        private val TAG = UPnPDeviceFinder::class.java.name
-
         const val MULTICAST_ADDRESS = "239.255.255.250"
 
         const val PORT = 1900
@@ -171,7 +168,7 @@ class UPnPDeviceFinder @JvmOverloads constructor(IPV4: Boolean = true) {
             content.append("ST: upnp:rootdevice").append(NEWLINE)
             content.append(NEWLINE)
 
-            Log.d(TAG, content.toString())
+            Log.d(content.toString())
 
             return content.toString()
         }

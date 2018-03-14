@@ -52,7 +52,7 @@ class UPnPDevice private constructor() {
     var server: String? = null
         private set
 
-    private var mProperties: HashMap<String, String>? = null
+    var mProperties: HashMap<String, String>? = null
     var iconUrl: String? = null
         private set
 

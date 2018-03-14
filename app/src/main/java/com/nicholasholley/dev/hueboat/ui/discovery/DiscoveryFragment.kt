@@ -56,7 +56,7 @@ class DiscoveryFragment: BaseFragment(), MarkForInjection {
                 .filter {
                     try {
                         it.downloadSpecs()
-                        Log.d(it.host)
+                        Log.d(it.mProperties?.toString() ?: "blegh")
                     } catch (e: Exception) {
                         Log.d(e.message ?: "Didnt dl specs")
                     }

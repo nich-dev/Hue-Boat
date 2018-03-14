@@ -60,7 +60,7 @@ class UPnPDeviceAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): ViewHolder {
-        return ViewHolder(inflater?.inflate(R.layout.list_item_upnp_device, parent, false) ?: View(context))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_item_upnp_device, parent, false) ?: View(context))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -108,8 +108,8 @@ class UPnPDeviceAdapter(
         var location: TextView
 
         init {
-            friendlyName = view.findViewById(R.id.friendly_name)
-            location = view.findViewById(R.id.location)
+            friendlyName = view.findViewById(R.id.friendly_name) as TextView
+            location = view.findViewById(R.id.location) as TextView
         }
 
         fun click(view: View) {
