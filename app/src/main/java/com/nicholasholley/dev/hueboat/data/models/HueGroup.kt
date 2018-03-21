@@ -6,7 +6,7 @@ import io.realm.RealmList
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 
-class HueGroup(
+open class HueGroup(
         @PrimaryKey var id: Long = 0L,
         @Expose     var name:       String? = null,
         @Expose     var type:       String? = null,

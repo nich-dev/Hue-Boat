@@ -15,4 +15,10 @@
         android:layout_height="match_parent"
         style="@style/Base.Widget.AppCompat.ProgressBar"/>
 
+    <Button
+        android:id="@+id/test_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TEST ME"/>
+
 </android.support.constraint.ConstraintLayout>

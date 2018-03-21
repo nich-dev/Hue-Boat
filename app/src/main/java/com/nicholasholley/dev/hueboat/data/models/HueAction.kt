@@ -8,7 +8,7 @@ import io.realm.RealmResults
 import io.realm.annotations.LinkingObjects
 import io.realm.annotations.PrimaryKey
 
-class HueAction(
+open class HueAction(
         @PrimaryKey var id:         Long = 0L,
         @Expose var on:             Boolean = false,
         @Expose var reachable:      Boolean = false,

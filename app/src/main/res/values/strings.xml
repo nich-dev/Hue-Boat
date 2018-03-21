@@ -9,5 +9,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_settings">Settings</string>
+    <!-- Networking -->
+    <string name="base_url">https://01c614db-96f9-4039-baa6-bd4ee2263baf.mock.pstmn.io</string>
     <!-- helper -->
 </resources>

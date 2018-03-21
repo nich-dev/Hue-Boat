@@ -18,9 +18,15 @@ import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.AccelerateInterpolator
+import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.Spinner
+import com.nicholasholley.dev.hueboat.data.models.wrapper.HueLightWrapper
+import com.nicholasholley.dev.hueboat.data.network.api.LightsApi
 import kotlinx.android.synthetic.main.fragment_discovery.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 /**
@@ -32,6 +38,8 @@ class DiscoveryFragment: BaseFragment(), MarkForInjection {
     //injection
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject
+    lateinit var lightsApi: LightsApi
     lateinit var uPnPAdapter: UPnPDeviceAdapter
     var list: RecyclerView? = null
     var spinnyBoi: ProgressBar? = null
@@ -47,7 +55,27 @@ class DiscoveryFragment: BaseFragment(), MarkForInjection {
         spinnyBoi = parent.findViewById<ProgressBar>(R.id.spinner)?.apply{
             visibility = View.VISIBLE
         }
+        parent.findViewById<Button>(R.id.test_button)?.setOnClickListener {
+            testApi()
+        }
         return parent
+    }
+
+    private fun testApi() {
+        lightsApi.getAll("username").enqueue(object: Callback<HueLightWrapper>{
+            override fun onFailure(call: Call<HueLightWrapper>?, t: Throwable?) {
+                Log.d(t.toString())
+            }
+
+            override fun onResponse(call: Call<HueLightWrapper>?, response: Response<HueLightWrapper>?) {
+                response?.body()?.let {
+                    Log.d("Found ${it.lights?.size} lights")
+                    for (lightEntry in it.lights ?: hashMapOf()){
+                        Log.d(lightEntry.toString())
+                    }
+                }
+            }
+        })
     }
 
     override fun bindToVM() {

@@ -6,7 +6,7 @@ import io.realm.RealmResults
 import io.realm.annotations.LinkingObjects
 import io.realm.annotations.PrimaryKey
 
-class HueSensorConfig(
+open class HueSensorConfig(
         @PrimaryKey var id:     Long = 0L,
         @Expose var on:         Boolean? = null,
         @Expose var reachable:  Boolean? = null,

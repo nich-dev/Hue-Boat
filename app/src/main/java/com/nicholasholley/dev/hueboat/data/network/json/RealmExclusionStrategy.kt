@@ -1,4 +1,4 @@
-package com.dukeenergy.etrac.models.json.strategies
+package com.nicholasholley.dev.hueboat.data.network.json
 
 import com.google.gson.ExclusionStrategy
 import com.google.gson.FieldAttributes

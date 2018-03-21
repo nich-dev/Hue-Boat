@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 
-class HueSensor(
+open class HueSensor(
         @PrimaryKey var id:             Long = 0L,
         @Expose var name:               String? = null,
         @Expose var modelid:            String? = null,

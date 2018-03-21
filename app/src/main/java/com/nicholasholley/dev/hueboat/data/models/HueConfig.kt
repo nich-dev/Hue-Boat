@@ -6,7 +6,7 @@ import io.realm.RealmResults
 import io.realm.annotations.LinkingObjects
 import io.realm.annotations.PrimaryKey
 
-class HueConfig(
+open class HueConfig(
         @PrimaryKey var id:             Long = 0L,
         @Expose var name:               String? = null,
         @Expose var apiversion:         String? = null,
