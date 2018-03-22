@@ -20,9 +20,7 @@ class LightSerializer @Inject constructor(
             lights = HashMap()
             json?.asJsonObject?.entrySet()?.let {
                 for (entryItem in it){
-                    Log.d(entryItem.toString())
                     entryToHueLight(entryItem)?.let {
-                        Log.d(it.toString())
                         lights?.put(entryItem.key, it)
                     }
                 }
@@ -31,11 +29,14 @@ class LightSerializer @Inject constructor(
 
     }
 
-    //We don't care about get errors, just throw in nulls
     private fun entryToHueLight(obj: Map.Entry<String, JsonElement>): HueLight? {
         val currentValue: JsonObject = obj.value.asJsonObject
-        return gson.fromJson(obj.value, HueLight::class.java).apply {
-            id = obj.key.toLong()
+        if (obj.key.toLongOrNull() != null) {
+            return gson.fromJson(obj.value, HueLight::class.java).apply {
+                id = obj.key.toLong()
+            }
+        } else {
+            return null
         }
     }
 }
