@@ -1,13 +1,11 @@
 package com.nicholasholley.dev.hueboat.data.network.api
 
 import com.nicholasholley.dev.hueboat.data.models.HueGroup
+import com.nicholasholley.dev.hueboat.data.models.HueState
 import com.nicholasholley.dev.hueboat.data.models.wrapper.HueGroupWrapper
 import com.nicholasholley.dev.hueboat.data.network.json.SimpleResponse
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface GroupsApi {
     @GET(GROUPS_ALL)
@@ -19,6 +17,31 @@ interface GroupsApi {
     fun create(
             @Body group: HueGroup,
             @Path(value = USERNAME_REPLACEMENT) username: String?
+    ): Call<SimpleResponse>
+
+    @GET(GROUPS_SINGLE)
+    fun get(
+            @Path(value = USERNAME_REPLACEMENT) username: String?,
+            @Path(value = ID_REPLACEMENT) id: Long = 0L
+    ): Call<HueGroup>
+
+    @PUT(GROUPS_SINGLE)
+    fun update(
+            @Path(value = USERNAME_REPLACEMENT) username: String?,
+            @Path(value = ID_REPLACEMENT) id: Long = 0L,
+            @Body hueGroup: HueGroup
+    ): Call<List<SimpleResponse>>
+
+    @PUT(GROUPS_SINGLE_STATE)
+    fun updateState(
+            @Path(value = USERNAME_REPLACEMENT) username: String?,
+            @Path(value = ID_REPLACEMENT) id: Long = 0L,
+            @Body hueState: HueState
+    ): Call<List<SimpleResponse>>
+
+    fun delete(
+            @Path(value = USERNAME_REPLACEMENT) username: String?,
+            @Path(value = ID_REPLACEMENT) id: Long = 0L
     ): Call<SimpleResponse>
 
     companion object {

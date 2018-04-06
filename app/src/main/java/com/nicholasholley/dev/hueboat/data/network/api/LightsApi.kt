@@ -1,6 +1,7 @@
 package com.nicholasholley.dev.hueboat.data.network.api
 
 import com.nicholasholley.dev.hueboat.data.models.HueLight
+import com.nicholasholley.dev.hueboat.data.models.HueState
 import com.nicholasholley.dev.hueboat.data.models.wrapper.HueLightWrapper
 import com.nicholasholley.dev.hueboat.data.network.json.SimpleResponse
 import retrofit2.Call
@@ -21,7 +22,7 @@ interface LightsApi {
     @GET(LIGHTS_SINGLE)
     fun get(
         @Path(value = USERNAME_REPLACEMENT) username: String?,
-        @Path(value = USERNAME_REPLACEMENT) id: Long = 0L
+        @Path(value = ID_REPLACEMENT) id: Long = 0L
     ): Call<HueLight>
 
     @POST(LIGHTS_ALL)
@@ -32,21 +33,21 @@ interface LightsApi {
     @PUT(LIGHTS_SINGLE)
     fun update(
         @Path(value = USERNAME_REPLACEMENT) username: String?,
-        @Path(value = USERNAME_REPLACEMENT) id: Long = 0L,
+        @Path(value = ID_REPLACEMENT) id: Long = 0L,
         @Body hueLight: HueLight
-    )
+    ): Call<List<SimpleResponse>>
 
     @PUT(LIGHTS_SINGLE_STATE)
     fun updateState(
         @Path(value = USERNAME_REPLACEMENT) username: String?,
-        @Path(value = USERNAME_REPLACEMENT) id: Long = 0L,
-        @Body hueLight: HueLight
-    )
+        @Path(value = ID_REPLACEMENT) id: Long = 0L,
+        @Body hueState: HueState
+    ): Call<List<SimpleResponse>>
 
     @DELETE(LIGHTS_SINGLE)
     fun delete(
         @Path(value = USERNAME_REPLACEMENT) username: String?,
-        @Path(value = USERNAME_REPLACEMENT) id: Long = 0L
+        @Path(value = ID_REPLACEMENT) id: Long = 0L
     )
 
     companion object {
