@@ -49,18 +49,18 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     // google ui support
-    implementation 'com.android.support:appcompat-v7:27.1.0'
-    implementation 'com.android.support:design:27.1.0'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0-beta3'
-    implementation 'com.android.support:support-v4:27.1.0'
-    implementation 'com.android.support:recyclerview-v7:27.1.0'
-    implementation 'com.android.support:cardview-v7:27.1.0'
-    implementation 'com.android.support:support-vector-drawable:27.1.0'
+    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'com.android.support:support-vector-drawable:27.1.1'
     // Support lib
-    implementation 'android.arch.lifecycle:extensions:1.1.0'
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
     implementation 'com.google.firebase:firebase-crash:11.0.4'
     implementation 'com.google.firebase:firebase-core:11.0.4'
-    kapt "android.arch.lifecycle:compiler:1.1.0"
+    kapt "android.arch.lifecycle:compiler:1.1.1"
     // Injection
     implementation 'com.google.dagger:dagger:2.13'
     kapt 'com.google.dagger:dagger-compiler:2.13'
@@ -84,8 +84,8 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:4.6.0'
     implementation 'net.ypresto.timbertreeutils:timbertreeutils:1.0.0'
     // Stetho for managing DB
-    compile 'com.facebook.stetho:stetho:1.5.0'
-    compile 'com.uphyca:stetho_realm:2.2.2'
+    implementation 'com.facebook.stetho:stetho:1.5.0'
+    implementation 'com.uphyca:stetho_realm:2.2.2'
     // Testing
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
