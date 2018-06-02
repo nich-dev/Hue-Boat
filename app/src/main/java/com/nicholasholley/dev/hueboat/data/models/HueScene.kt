@@ -7,7 +7,7 @@ import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 
 open class HueScene(
-        @PrimaryKey var id:         Long = 0L,
+        @PrimaryKey var id:         String = "",
         @Expose var name:           String? = null,
         @Expose var type:           String? = null,
         @Expose var owner:          String? = null,

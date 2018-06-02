@@ -3,11 +3,14 @@ package com.nicholasholley.dev.hueboat.data.network.api
 import com.nicholasholley.dev.hueboat.data.models.HueGroup
 import com.nicholasholley.dev.hueboat.data.models.HueState
 import com.nicholasholley.dev.hueboat.data.models.wrapper.HueGroupWrapper
+import com.nicholasholley.dev.hueboat.data.network.api._BaseApi.Companion.BASE_PATH
+import com.nicholasholley.dev.hueboat.data.network.api._BaseApi.Companion.ID_REPLACEMENT
+import com.nicholasholley.dev.hueboat.data.network.api._BaseApi.Companion.USERNAME_REPLACEMENT
 import com.nicholasholley.dev.hueboat.data.network.json.SimpleResponse
 import retrofit2.Call
 import retrofit2.http.*
 
-interface GroupsApi {
+interface GroupsApi : _BaseApi {
     @GET(GROUPS_ALL)
     fun getAll(
             @Path(value = USERNAME_REPLACEMENT) username: String?
@@ -45,10 +48,7 @@ interface GroupsApi {
     ): Call<SimpleResponse>
 
     companion object {
-        private const val USERNAME_REPLACEMENT = "username"
-        private const val ID_REPLACEMENT = "id"
-
-        private const val GROUPS_ALL = "/api/{$USERNAME_REPLACEMENT}/groups"
+        private const val GROUPS_ALL = "$BASE_PATH/groups"
         private const val GROUPS_NEW = "$GROUPS_ALL/new"
         private const val GROUPS_SINGLE = "$GROUPS_ALL/{$ID_REPLACEMENT}"
         private const val GROUPS_SINGLE_STATE = "$GROUPS_ALL/{$ID_REPLACEMENT}/state"
