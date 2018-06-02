@@ -1,6 +1,9 @@
 package com.nicholasholley.dev.hueboat.data.models.serialization
 
-import com.google.gson.*
+import com.google.gson.Gson
+import com.google.gson.JsonDeserializationContext
+import com.google.gson.JsonDeserializer
+import com.google.gson.JsonElement
 import com.nicholasholley.dev.hueboat.data.models.HueGroup
 import com.nicholasholley.dev.hueboat.data.models.wrapper.HueGroupWrapper
 import java.lang.reflect.Type
@@ -9,32 +12,18 @@ import javax.inject.Inject
 class GroupSerializer @Inject constructor(
         val gson: Gson
 ) : JsonDeserializer<HueGroupWrapper> {
-    override fun deserialize(
-            json: JsonElement?,
-            typeOfT: Type?,
-            context: JsonDeserializationContext?
-    ): HueGroupWrapper {
-        return HueGroupWrapper().apply {
+    override fun deserialize(json: JsonElement?, typeOfT: Type?, context: JsonDeserializationContext?): HueGroupWrapper =
+        HueGroupWrapper().apply {
             groups = HashMap()
-            json?.asJsonObject?.entrySet()?.let {
-                for (entryItem in it){
-                    entryToHueLight(entryItem)?.let {
-                        groups?.put(entryItem.key, it)
-                    }
+            json?.asJsonObject?.entrySet()?.forEach { item ->
+                entryToHue(item)?.let {
+                    groups?.put(item.key, it)
                 }
             }
         }
 
-    }
-
-    private fun entryToHueLight(obj: Map.Entry<String, JsonElement>): HueGroup? {
-        val currentValue: JsonObject = obj.value.asJsonObject
-        if (obj.key.toLongOrNull() != null) {
-            return gson.fromJson(obj.value, HueGroup::class.java).apply {
-                id = obj.key.toLong()
+    private fun entryToHue(obj: Map.Entry<String, JsonElement>): HueGroup? =
+            obj.key.toLongOrNull()?.let {
+                gson.fromJson(obj.value, HueGroup::class.java).apply { id = it }
             }
-        } else {
-            return null
-        }
-    }
 }

@@ -1,42 +1,29 @@
 package com.nicholasholley.dev.hueboat.data.models.serialization
 
-import com.google.gson.*
+import com.google.gson.Gson
+import com.google.gson.JsonDeserializationContext
+import com.google.gson.JsonDeserializer
+import com.google.gson.JsonElement
 import com.nicholasholley.dev.hueboat.data.models.HueLight
-import com.nicholasholley.dev.hueboat.data.models.HueState
 import com.nicholasholley.dev.hueboat.data.models.wrapper.HueLightWrapper
-import com.nicholasholley.dev.hueboat.util.log.Log
 import java.lang.reflect.Type
 import javax.inject.Inject
 
 class LightSerializer @Inject constructor(
-        val gson: Gson
+        private val gson: Gson
 ) : JsonDeserializer<HueLightWrapper> {
-    override fun deserialize(
-            json: JsonElement?,
-            typeOfT: Type?,
-            context: JsonDeserializationContext?
-    ): HueLightWrapper {
-        return HueLightWrapper().apply {
+    override fun deserialize(json: JsonElement?, typeOfT: Type?, context: JsonDeserializationContext?): HueLightWrapper =
+        HueLightWrapper().apply {
             lights = HashMap()
-            json?.asJsonObject?.entrySet()?.let {
-                for (entryItem in it){
-                    entryToHueLight(entryItem)?.let {
-                        lights?.put(entryItem.key, it)
-                    }
+            json?.asJsonObject?.entrySet()?.forEach { item ->
+                entryToHue(item)?.let {
+                    lights?.put(item.key, it)
                 }
             }
         }
 
-    }
-
-    private fun entryToHueLight(obj: Map.Entry<String, JsonElement>): HueLight? {
-        val currentValue: JsonObject = obj.value.asJsonObject
-        if (obj.key.toLongOrNull() != null) {
-            return gson.fromJson(obj.value, HueLight::class.java).apply {
-                id = obj.key.toLong()
+    private fun entryToHue(obj: Map.Entry<String, JsonElement>): HueLight? =
+            obj.key.toLongOrNull()?.let {
+                gson.fromJson(obj.value, HueLight::class.java).apply { id = it }
             }
-        } else {
-            return null
-        }
-    }
 }

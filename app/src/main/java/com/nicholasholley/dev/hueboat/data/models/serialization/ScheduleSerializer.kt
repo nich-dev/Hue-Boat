@@ -1,6 +1,9 @@
 package com.nicholasholley.dev.hueboat.data.models.serialization
 
-import com.google.gson.*
+import com.google.gson.Gson
+import com.google.gson.JsonDeserializationContext
+import com.google.gson.JsonDeserializer
+import com.google.gson.JsonElement
 import com.nicholasholley.dev.hueboat.data.models.HueSchedule
 import com.nicholasholley.dev.hueboat.data.models.wrapper.HueScheduleWrapper
 import java.lang.reflect.Type
@@ -9,28 +12,18 @@ import javax.inject.Inject
 class ScheduleSerializer @Inject constructor(
         val gson: Gson
 ) : JsonDeserializer<HueScheduleWrapper> {
-    override fun deserialize(
-            json: JsonElement?,
-            typeOfT: Type?,
-            context: JsonDeserializationContext?
-    ): HueScheduleWrapper {
-        return HueScheduleWrapper().apply {
+    override fun deserialize(json: JsonElement?, typeOfT: Type?, context: JsonDeserializationContext?): HueScheduleWrapper =
+        HueScheduleWrapper().apply {
             schedules = HashMap()
-            json?.asJsonObject?.entrySet()?.let {
-                for (entryItem in it){
-                    entryToHueLight(entryItem)?.let {
-                        schedules?.put(entryItem.key, it)
-                    }
+            json?.asJsonObject?.entrySet()?.forEach { item ->
+                entryToHue(item)?.let {
+                    schedules?.put(item.key, it)
                 }
             }
         }
-    }
 
-    private fun entryToHueLight(obj: Map.Entry<String, JsonElement>): HueSchedule? {
-        return if (obj.key.toLongOrNull() != null) {
-            gson.fromJson(obj.value, HueSchedule::class.java).apply {
-                id = obj.key.toLong()
+    private fun entryToHue(obj: Map.Entry<String, JsonElement>): HueSchedule? =
+            obj.key.toLongOrNull()?.let {
+                gson.fromJson(obj.value, HueSchedule::class.java).apply { id = it }
             }
-        } else null
-    }
 }
