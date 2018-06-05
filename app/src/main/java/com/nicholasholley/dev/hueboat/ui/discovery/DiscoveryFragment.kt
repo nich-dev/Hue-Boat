@@ -1,6 +1,7 @@
 package com.nicholasholley.dev.hueboat.ui.discovery
 
 import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -23,6 +24,7 @@ import android.widget.ProgressBar
 import android.widget.Spinner
 import com.nicholasholley.dev.hueboat.data.models.wrapper.HueLightWrapper
 import com.nicholasholley.dev.hueboat.data.network.api.LightsApi
+import com.nicholasholley.dev.hueboat.util.ext.observe
 import kotlinx.android.synthetic.main.fragment_discovery.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -36,8 +38,13 @@ import retrofit2.Response
 
 class DiscoveryFragment: BaseFragment(), MarkForInjection {
     //injection
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
+    val vm: DiscoveryVM by lazy {
+        ViewModelProviders.of(this, viewModelFactory).get(
+                DiscoveryVM::class.java
+        )
+    }
+
     @Inject
     lateinit var lightsApi: LightsApi
     lateinit var uPnPAdapter: UPnPDeviceAdapter
@@ -61,6 +68,11 @@ class DiscoveryFragment: BaseFragment(), MarkForInjection {
         return parent
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        bindToVM()
+    }
+
     private fun testApi() {
         lightsApi.getAll("username").enqueue(object: Callback<HueLightWrapper>{
             override fun onFailure(call: Call<HueLightWrapper>?, t: Throwable?) {
@@ -79,39 +91,33 @@ class DiscoveryFragment: BaseFragment(), MarkForInjection {
     }
 
     override fun bindToVM() {
-        UPnPDeviceFinder().observe()
-                .subscribeOn(Schedulers.io())
-                .filter {
-                    try {
-                        it.downloadSpecs()
-                        Log.d(it.mProperties?.toString() ?: "blegh")
-                    } catch (e: Exception) {
-                        Log.d(e.message ?: "Didnt dl specs")
-                    }
-                    true
-                }
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
-                    Log.d("doin a subscribe-boi")
-                    if (uPnPAdapter.getItemCount() == 0) {
-                        spinnyBoi?.animate()
-                                ?.alpha(0f)
-                                ?.setDuration(1000)
-                                ?.setInterpolator(AccelerateInterpolator())
-                                ?.start()
+        vm.doWatch()
+        vm.uPnPDevices.observe(this, {
+            Log.d(it.toString())
+            Log.d("doin a subscribe-boi")
+            if (uPnPAdapter.getItemCount() == 0) {
+                spinnyBoi?.animate()
+                        ?.alpha(0f)
+                        ?.setDuration(1000)
+                        ?.setInterpolator(AccelerateInterpolator())
+                        ?.start()
 
-                        list?.setAlpha(0f)
-                        list?.setVisibility(View.VISIBLE)
-                        list?.animate()
-                                ?.alpha(1f)
-                                ?.setDuration(1000)
-                                ?.setStartDelay(1000)
-                                ?.setInterpolator(DecelerateInterpolator())
-                                ?.start()
-                    }
+                list?.setAlpha(0f)
+                list?.setVisibility(View.VISIBLE)
+                list?.animate()
+                        ?.alpha(1f)
+                        ?.setDuration(1000)
+                        ?.setStartDelay(1000)
+                        ?.setInterpolator(DecelerateInterpolator())
+                        ?.start()
+            }
 
-                    uPnPAdapter.add(it)
-                }
+            try {
+                it?.last()?.let { uPnPAdapter.add(it) }
+            } catch (e: Exception) {
+                Log.d(e.toString())
+            }
+        })
     }
 
     companion object {

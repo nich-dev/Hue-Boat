@@ -25,9 +25,9 @@ import android.support.annotation.Nullable;
  * limitations under the License.
  */
 
-public class UPnPDeviceComparator implements Comparator<UPnPDevice> {
+public class UPnPDeviceComparator implements Comparator<UPnPData> {
     @Override
-    public int compare(UPnPDevice lhs, UPnPDevice rhs) {
+    public int compare(UPnPData lhs, UPnPData rhs) {
         // Handle null objects
         int compare = compareNull(lhs, rhs);
         if (compare == 0 && lhs == null) {

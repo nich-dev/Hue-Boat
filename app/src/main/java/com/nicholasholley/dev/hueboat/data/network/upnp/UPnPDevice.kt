@@ -41,34 +41,33 @@ import okhttp3.Request
  * dgmltn/Android-UPnP-Browser
  */
 
-class UPnPDevice private constructor() {
+class UPnPDevice private constructor() : UPnPData {
 
     var rawUPnP: String? = null
         private set
     var rawXml: String? = null
         private set
-    var location: URL? = null
-        private set
+    override var location: URL? = null
     var server: String? = null
         private set
 
-    var mProperties: HashMap<String, String>? = null
+    override var mProperties: HashMap<String, String>? = null
     var iconUrl: String? = null
         private set
 
-    val host: String
+    override val host: String
         get() = location!!.host
 
-    val inetAddress: InetAddress
+    override val inetAddress: InetAddress
         @Throws(UnknownHostException::class)
         get() = InetAddress.getByName(host)
 
-    val friendlyName: String?
-        get() = mProperties!!["xml_friendly_name"]
+    override val friendlyName: String?
+        get() = mProperties!![FRIENDLY_NAME]
 
     // Special case for SONOS: remove the leading ip address from the friendly name
     // "192.168.1.123 - Sonos PLAY:1" => "Sonos PLAY:1"
-    val scrubbedFriendlyName: String?
+    override val scrubbedFriendlyName: String?
         get() {
             var friendlyName: String? = mProperties!!["xml_friendly_name"]
             if (friendlyName != null && friendlyName.startsWith(host + " - ")) {
@@ -84,7 +83,7 @@ class UPnPDevice private constructor() {
 
     @Transient private val mClient = OkHttpClient()
 
-    fun generateIconUrl(): String? {
+    override fun generateIconUrl(): String? {
         var path = mProperties!!["xml_icon_url"]
         if (TextUtils.isEmpty(path)) {
             return null
@@ -97,7 +96,7 @@ class UPnPDevice private constructor() {
     }
 
     @Throws(Exception::class)
-    fun downloadSpecs() {
+    override fun downloadSpecs() {
         val request = Request.Builder()
                 .url(location!!)
                 .build()
@@ -123,7 +122,7 @@ class UPnPDevice private constructor() {
 
         mProperties!!.put("xml_icon_url", xPath.compile("//icon/url").evaluate(doc))
         generateIconUrl()
-        mProperties!!.put("xml_friendly_name", xPath.compile("//friendlyName").evaluate(doc))
+        mProperties!!.put(FRIENDLY_NAME, xPath.compile("//friendlyName").evaluate(doc))
     }
 
     companion object {
@@ -131,6 +130,7 @@ class UPnPDevice private constructor() {
         ////////////////////////////////////////////////////////////////////////////////
         // UPnP Response Parsing
         ////////////////////////////////////////////////////////////////////////////////
+        val FRIENDLY_NAME = "xml_friendly_name"
 
         fun getInstance(raw: String): UPnPDevice? {
             val parsed = parseRaw(raw)

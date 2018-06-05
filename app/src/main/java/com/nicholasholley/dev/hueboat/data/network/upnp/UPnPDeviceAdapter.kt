@@ -20,13 +20,13 @@ class UPnPDeviceAdapter(
         val context: Context
 ): RecyclerView.Adapter<UPnPDeviceAdapter.ViewHolder>() {
     interface ItemClickListener {
-        fun onClick(item: UPnPDevice, position: Int)
+        fun onClick(item: UPnPData, position: Int)
     }
 
     private val mComparator = UPnPDeviceComparator()
 
     private var inflater: LayoutInflater? = null
-    private var mItems: ArrayList<UPnPDevice> = ArrayList()
+    private var mItems: ArrayList<UPnPData> = ArrayList()
     private var mListener: ItemClickListener? = null
 
     fun setItemClickListener(listener: ItemClickListener) {
@@ -37,7 +37,7 @@ class UPnPDeviceAdapter(
         return mItems.size
     }
 
-    fun getItem(position: Int): UPnPDevice {
+    fun getItem(position: Int): UPnPData {
         return mItems[position]
     }
 
@@ -47,7 +47,7 @@ class UPnPDeviceAdapter(
         notifyItemRangeRemoved(0, count)
     }
 
-    fun add(item: UPnPDevice) {
+    fun add(item: UPnPData) {
         val index = Collections.binarySearch(mItems, item, mComparator)
         if (index < 0) {
             val position = -index - 1

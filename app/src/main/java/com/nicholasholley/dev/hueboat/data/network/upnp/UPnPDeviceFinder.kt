@@ -57,7 +57,7 @@ class UPnPDeviceFinder @JvmOverloads constructor(IPV4: Boolean = true) {
 
     }
 
-    fun observe(): Observable<UPnPDevice> {
+    fun observe(): Observable<UPnPData> {
         return Observable.create(ObservableOnSubscribe { emitter ->
             /**
              * Called for each Observer that subscribes.
