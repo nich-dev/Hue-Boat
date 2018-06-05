@@ -10,7 +10,7 @@ import com.nicholasholley.dev.hueboat.data.network.json.SimpleResponse
 import retrofit2.Call
 import retrofit2.http.*
 
-interface GroupsApi : _BaseApi {
+interface GroupsApi {
     @GET(GROUPS_ALL)
     fun getAll(
             @Path(value = USERNAME_REPLACEMENT) username: String?

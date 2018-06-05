@@ -11,7 +11,7 @@ import com.nicholasholley.dev.hueboat.data.network.json.SimpleResponse
 import retrofit2.Call
 import retrofit2.http.*
 
-interface SensorApi : _BaseApi {
+interface SensorApi {
 
     @GET(SENSORS_ALL)
     fun getAll(

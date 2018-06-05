@@ -4,8 +4,8 @@ import android.app.Application
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.nicholasholley.dev.hueboat.R
-import com.nicholasholley.dev.hueboat.data.models.serialization.LightSerializer
-import com.nicholasholley.dev.hueboat.data.models.wrapper.HueLightWrapper
+import com.nicholasholley.dev.hueboat.data.models.serialization.*
+import com.nicholasholley.dev.hueboat.data.models.wrapper.*
 import com.nicholasholley.dev.hueboat.data.network.json.RealmExclusionStrategy
 import dagger.Module
 import dagger.Provides
@@ -38,20 +38,48 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideLightSerializer(@Named(WRAPPER_GSON) gson: Gson): LightSerializer {
-        return LightSerializer(gson)
-    }
+    fun provideRuleSerializer(@Named(WRAPPER_GSON) gson: Gson): RuleSerializer = RuleSerializer(gson)
+
+    @Provides
+    @Singleton
+    fun provideLightSerializer(@Named(WRAPPER_GSON) gson: Gson): LightSerializer = LightSerializer(gson)
+
+    @Provides
+    @Singleton
+    fun provideGroupSerializer(@Named(WRAPPER_GSON) gson: Gson): GroupSerializer = GroupSerializer(gson)
+
+    @Provides
+    @Singleton
+    fun provideSceneSerializer(@Named(WRAPPER_GSON) gson: Gson): SceneSerializer = SceneSerializer(gson)
+
+    @Provides
+    @Singleton
+    fun provideScheduleSerializer(@Named(WRAPPER_GSON) gson: Gson): ScheduleSerializer = ScheduleSerializer(gson)
+
+    @Provides
+    @Singleton
+    fun provideSensorSerializer(@Named(WRAPPER_GSON) gson: Gson): SensorSerializer = SensorSerializer(gson)
 
     @Provides
     @Singleton
     @Named(BASE_GSON)
-    fun provideBaseGson(lightSerializer: LightSerializer): Gson {
-        return GsonBuilder()
-                .excludeFieldsWithoutExposeAnnotation()
-                .setExclusionStrategies(RealmExclusionStrategy())
-                .registerTypeAdapter(HueLightWrapper::class.java, lightSerializer)
-                .create()
-    }
+    fun provideBaseGson(
+            groupSerializer: GroupSerializer, 
+            lightSerializer: LightSerializer,
+            ruleSerializer: RuleSerializer,
+            sceneSerializer: SceneSerializer,
+            scheduleSerializer: ScheduleSerializer,
+            sensorSerializer: SensorSerializer
+    ): Gson = GsonBuilder().apply {
+            excludeFieldsWithoutExposeAnnotation()
+            setExclusionStrategies(RealmExclusionStrategy())
+            registerTypeAdapter(HueGroupWrapper::class.java, groupSerializer)
+            registerTypeAdapter(HueLightWrapper::class.java, lightSerializer)
+            registerTypeAdapter(HueRuleWrapper::class.java, ruleSerializer)
+            registerTypeAdapter(HueSceneWrapper::class.java, sceneSerializer)
+            registerTypeAdapter(HueScheduleWrapper::class.java, scheduleSerializer)
+            registerTypeAdapter(HueSensorWrapper::class.java, sensorSerializer)
+    }.create()
 
     @Provides
     @Singleton

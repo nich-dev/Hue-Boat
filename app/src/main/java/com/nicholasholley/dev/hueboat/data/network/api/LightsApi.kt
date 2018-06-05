@@ -10,7 +10,7 @@ import com.nicholasholley.dev.hueboat.data.network.json.SimpleResponse
 import retrofit2.Call
 import retrofit2.http.*
 
-interface LightsApi : _BaseApi {
+interface LightsApi {
 
     @GET(LIGHTS_ALL)
     fun getAll(

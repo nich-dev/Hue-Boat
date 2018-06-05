@@ -10,7 +10,7 @@ import com.nicholasholley.dev.hueboat.data.network.json.SimpleResponse
 import retrofit2.Call
 import retrofit2.http.*
 
-interface RuleApi : _BaseApi {
+interface RuleApi {
 
     @GET(RULES_ALL)
     fun getAll(
