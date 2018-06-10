@@ -1,14 +1,11 @@
 package com.nicholasholley.dev.hueboat.ui.discovery
 
-import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import com.nicholasholley.dev.hueboat.data.network.upnp.UPnPData
 import com.nicholasholley.dev.hueboat.data.network.upnp.UPnPDeviceFinder
 import com.nicholasholley.dev.hueboat.util.log.Log
 import com.nicholasholley.dev.hueboat.util.rx.SchedulersFacade
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class DiscoveryVM @Inject constructor(
@@ -20,7 +17,7 @@ class DiscoveryVM @Inject constructor(
         if (uPnPDevices.value == null) uPnPDevices.value = mutableListOf()
         else uPnPDevices.value?.clear()
         UPnPDeviceFinder().observe()
-                .subscribeOn(Schedulers.io())
+                .subscribeOn(schedulersFacade.io())
                 .filter {
                     try {
                         it.downloadSpecs()
@@ -29,10 +26,12 @@ class DiscoveryVM @Inject constructor(
                     }
                     it.friendlyName?.contains("Philips hue") ?: false
                 }
-                .observeOn(AndroidSchedulers.mainThread())
+                .observeOn(schedulersFacade.ui())
                 .subscribe {
-                    //TODO: Get working
                     uPnPDevices.value?.add(it)
+                    //LiveData does not update unless object changes.
+                    //Could write custom LiveData implementation also.
+                    uPnPDevices.value = uPnPDevices.value
                 }
     }
 }
