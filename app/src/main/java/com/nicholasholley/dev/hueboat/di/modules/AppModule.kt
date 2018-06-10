@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import com.nicholasholley.dev.hueboat.R
-import com.nicholasholley.dev.hueboat.data.network.upnp.UPnPDeviceFinder
+import com.nicholasholley.dev.hueboatsdk.data.network.upnp.UPnPDeviceFinder
 import com.nicholasholley.dev.hueboat.util.rx.SchedulersFacade
 import dagger.Module
 import dagger.Provides

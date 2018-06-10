@@ -4,9 +4,9 @@ import android.app.Application
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.nicholasholley.dev.hueboat.R
-import com.nicholasholley.dev.hueboat.data.models.serialization.*
-import com.nicholasholley.dev.hueboat.data.models.wrapper.*
-import com.nicholasholley.dev.hueboat.data.network.json.RealmExclusionStrategy
+import com.nicholasholley.dev.hueboatsdk.data.models.serialization.*
+import com.nicholasholley.dev.hueboatsdk.data.models.wrapper.*
+import com.nicholasholley.dev.hueboatsdk.data.network.json.RealmExclusionStrategy
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

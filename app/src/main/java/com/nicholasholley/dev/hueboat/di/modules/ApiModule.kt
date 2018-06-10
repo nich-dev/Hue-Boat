@@ -1,6 +1,6 @@
 package com.nicholasholley.dev.hueboat.di.modules
 
-import com.nicholasholley.dev.hueboat.data.network.api.*
+import com.nicholasholley.dev.hueboatsdk.data.network.api.*
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
