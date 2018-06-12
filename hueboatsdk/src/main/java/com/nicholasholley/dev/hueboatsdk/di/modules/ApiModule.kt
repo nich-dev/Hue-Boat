@@ -1,4 +1,4 @@
-package com.nicholasholley.dev.hueboat.di.modules
+package com.nicholasholley.dev.hueboatsdk.di.modules
 
 import com.nicholasholley.dev.hueboatsdk.data.network.api.*
 import dagger.Module

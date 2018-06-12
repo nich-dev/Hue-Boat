@@ -1,4 +1,4 @@
-package com.nicholasholley.dev.hueboatsdk.data.network.upnp
+package com.nicholasholley.dev.hueboat.ui.discovery
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView

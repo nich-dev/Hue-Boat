@@ -4,9 +4,7 @@ import android.app.Application
 import com.dukeenergy.etrac.di.modules.*
 import com.nicholasholley.dev.hueboat.HueBoatApp
 import com.nicholasholley.dev.hueboat.di.modules.ActivityModule
-import com.nicholasholley.dev.hueboat.di.modules.ApiModule
 import com.nicholasholley.dev.hueboat.di.modules.DataModule
-import com.nicholasholley.dev.hueboat.di.modules.NetworkModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule
@@ -22,8 +20,6 @@ import javax.inject.Singleton
         AppModule::class,
         ActivityModule::class,
         ViewModelModule::class,
-        NetworkModule::class,
-        ApiModule::class,
         DataModule::class
 ))
 interface AppComponent {

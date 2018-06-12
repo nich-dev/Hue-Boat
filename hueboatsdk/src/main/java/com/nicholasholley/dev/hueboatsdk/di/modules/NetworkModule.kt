@@ -1,12 +1,12 @@
-package com.nicholasholley.dev.hueboat.di.modules
+package com.nicholasholley.dev.hueboatsdk.di.modules
 
 import android.app.Application
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.nicholasholley.dev.hueboat.R
 import com.nicholasholley.dev.hueboatsdk.data.models.serialization.*
 import com.nicholasholley.dev.hueboatsdk.data.models.wrapper.*
 import com.nicholasholley.dev.hueboatsdk.data.network.json.RealmExclusionStrategy
+import com.nicholasholley.dev.hueboatsdk.util.NETWORK_URL
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -22,9 +22,7 @@ class NetworkModule {
     @Provides
     @Singleton
     @Named(BASE_URL)
-    fun provideBaseUrlString(app: Application): String {
-        return app.getString(R.string.base_url)
-    }
+    fun provideBaseUrlString(): String = NETWORK_URL
 
     @Provides
     @Singleton

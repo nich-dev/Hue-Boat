@@ -13,8 +13,6 @@ import android.view.animation.DecelerateInterpolator
 import android.widget.ProgressBar
 import com.dukeenergy.etrac.di.MarkForInjection
 import com.nicholasholley.dev.hueboat.R
-import com.nicholasholley.dev.hueboatsdk.data.network.api.LightsApi
-import com.nicholasholley.dev.hueboatsdk.data.network.upnp.UPnPDeviceAdapter
 import com.nicholasholley.dev.hueboat.ui.common.BaseFragment
 import com.nicholasholley.dev.hueboat.util.ext.observe
 import com.nicholasholley.dev.hueboat.util.log.Log

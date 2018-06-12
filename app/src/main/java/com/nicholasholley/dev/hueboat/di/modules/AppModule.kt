@@ -4,7 +4,6 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import com.nicholasholley.dev.hueboat.R
-import com.nicholasholley.dev.hueboatsdk.data.network.upnp.UPnPDeviceFinder
 import com.nicholasholley.dev.hueboat.util.rx.SchedulersFacade
 import dagger.Module
 import dagger.Provides
@@ -18,7 +17,7 @@ import javax.inject.Singleton
 @Module(includes = arrayOf(
     ViewModelModule::class
 ))
-class AppModule() {
+class AppModule {
 
     @Provides
     @Singleton
@@ -34,9 +33,6 @@ class AppModule() {
     fun provideSharedPreferences(app: Application): SharedPreferences =
         app.getSharedPreferences(app.resources.getString(R.string.shared_pref_name), 0)
 
-    @Provides
-    @Singleton
-    fun provideUPnPDeviceFinder(): UPnPDeviceFinder = UPnPDeviceFinder()
 
     @Provides
     fun provideSchedulersFacade(): SchedulersFacade = SchedulersFacade()
