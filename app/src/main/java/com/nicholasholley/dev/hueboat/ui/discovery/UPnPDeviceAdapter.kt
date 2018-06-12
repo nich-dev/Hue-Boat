@@ -10,6 +10,9 @@ import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
 import com.nicholasholley.dev.hueboat.R
+import com.nicholasholley.dev.hueboatsdk.data.network.upnp.SpannableBuilder
+import com.nicholasholley.dev.hueboatsdk.data.network.upnp.UPnPData
+import com.nicholasholley.dev.hueboatsdk.data.network.upnp.UPnPDeviceComparator
 import java.util.*
 
 

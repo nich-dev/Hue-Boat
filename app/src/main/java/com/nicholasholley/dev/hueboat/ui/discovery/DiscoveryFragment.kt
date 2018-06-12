@@ -16,6 +16,7 @@ import com.nicholasholley.dev.hueboat.R
 import com.nicholasholley.dev.hueboat.ui.common.BaseFragment
 import com.nicholasholley.dev.hueboat.util.ext.observe
 import com.nicholasholley.dev.hueboat.util.log.Log
+import com.nicholasholley.dev.hueboatsdk.data.network.api.LightsApi
 import javax.inject.Inject
 
 /**

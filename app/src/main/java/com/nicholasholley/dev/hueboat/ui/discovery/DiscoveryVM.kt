@@ -2,10 +2,10 @@ package com.nicholasholley.dev.hueboat.ui.discovery
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import com.nicholasholley.dev.hueboatsdk.data.network.upnp.UPnPData
-import com.nicholasholley.dev.hueboatsdk.data.network.upnp.UPnPDeviceFinder
 import com.nicholasholley.dev.hueboat.util.log.Log
 import com.nicholasholley.dev.hueboat.util.rx.SchedulersFacade
+import com.nicholasholley.dev.hueboatsdk.data.network.upnp.UPnPData
+import com.nicholasholley.dev.hueboatsdk.data.network.upnp.UPnPDeviceFinder
 import javax.inject.Inject
 
 class DiscoveryVM @Inject constructor(

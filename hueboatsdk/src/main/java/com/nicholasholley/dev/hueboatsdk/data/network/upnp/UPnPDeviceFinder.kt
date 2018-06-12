@@ -39,7 +39,7 @@ import io.reactivex.ObservableOnSubscribe
  *
  * This class will find all UPnP devices with a response code of "IpBridge" as specified by the philips hue api guide
  */
-class UPnPDeviceFinder @JvmOverloads constructor(IPV4: Boolean = true) {
+public class UPnPDeviceFinder @JvmOverloads constructor(IPV4: Boolean = true) {
 
     private val mInetDeviceAdr: InetAddress
 
