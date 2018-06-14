@@ -4,7 +4,7 @@ import io.realm.Realm
 import io.realm.RealmModel
 import io.realm.RealmResults
 
-interface _BaseData<T: RealmModel> {
+interface BaseData<T: RealmModel> {
     val clazz: Class<T>
     var realm: Realm
 
