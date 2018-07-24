@@ -2,7 +2,7 @@ package com.dukeenergy.etrac.di.modules
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
-import com.dukeenergy.etrac.di.ViewModelFactory
+import com.nicholasholley.dev.hueboat.di.ViewModelFactory
 import com.nicholasholley.dev.hueboat.ui.MainVM
 import com.nicholasholley.dev.hueboat.ui.discovery.DiscoveryVM
 import dagger.Binds

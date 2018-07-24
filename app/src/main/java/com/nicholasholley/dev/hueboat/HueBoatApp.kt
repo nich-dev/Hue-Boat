@@ -3,7 +3,7 @@ package com.nicholasholley.dev.hueboat
 import android.app.Activity
 import android.app.Application
 import android.app.Service
-import com.dukeenergy.etrac.di.AppInjector
+import com.nicholasholley.dev.hueboat.di.AppInjector
 import com.facebook.stetho.Stetho
 import com.nicholasholley.dev.hueboat.util.log.FirebaseTree
 import com.uphyca.stetho_realm.RealmInspectorModulesProvider
@@ -20,7 +20,6 @@ import javax.inject.Inject
 class HueBoatApp: Application(), HasActivityInjector, HasServiceInjector {
     @Inject lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
     @Inject lateinit var mServiceInjector: DispatchingAndroidInjector<Service>
-
 
     override fun onCreate() {
         AppInjector.init(this)

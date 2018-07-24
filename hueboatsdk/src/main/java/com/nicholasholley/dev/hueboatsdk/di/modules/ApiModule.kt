@@ -10,7 +10,7 @@ import javax.inject.Singleton
 class ApiModule {
     @Provides
     @Singleton
-    fun providesGrouppi(retrofit: Retrofit): GroupsApi {
+    fun providesGroupApi(retrofit: Retrofit): GroupsApi {
         return retrofit.create(GroupsApi::class.java)
     }
     @Provides

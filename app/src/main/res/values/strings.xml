@@ -11,5 +11,6 @@
     <string name="title_settings">Settings</string>
     <!-- Networking -->
     <string name="base_url">https://e5067eea-ff07-45a2-a82e-88111f68de50.mock.pstmn.io</string>
+    <string name="bridge_search">Bridge Search</string>
     <!-- helper -->
 </resources>

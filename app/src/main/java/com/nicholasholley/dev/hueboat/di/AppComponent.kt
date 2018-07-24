@@ -1,4 +1,4 @@
-package com.dukeenergy.etrac.di
+package com.nicholasholley.dev.hueboat.di
 
 import android.app.Application
 import com.dukeenergy.etrac.di.modules.*

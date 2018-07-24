@@ -29,7 +29,7 @@ abstract class RealmDataMixin<T>: BaseData<T>
                         is Long? ->         { equalTo(field, value) }
                         is Short? ->        { equalTo(field, value) }
                         is String? ->       { equalTo(field, value) }
-                        else -> throw IllegalArgumentException(BaseData.REALM_FIELD_TYPE_EXCEPTION_MSG)
+                        else -> throw Throwable(BaseData.REALM_FIELD_TYPE_EXCEPTION_MSG)
                     }
                 }
             }

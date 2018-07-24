@@ -11,12 +11,13 @@ import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.widget.ProgressBar
-import com.dukeenergy.etrac.di.MarkForInjection
+import com.github.florent37.kotlin.pleaseanimate.please
 import com.nicholasholley.dev.hueboat.R
+import com.nicholasholley.dev.hueboat.di.MarkForInjection
 import com.nicholasholley.dev.hueboat.ui.common.BaseFragment
+import com.nicholasholley.dev.hueboat.util.Constants
 import com.nicholasholley.dev.hueboat.util.ext.observe
-import com.nicholasholley.dev.hueboat.util.log.Log
-import com.nicholasholley.dev.hueboatsdk.data.network.api.LightsApi
+import com.nicholasholley.dev.hueboatsdk.util.d
 import javax.inject.Inject
 
 /**
@@ -32,23 +33,18 @@ class DiscoveryFragment: BaseFragment(), MarkForInjection {
         )
     }
 
-    @Inject
-    lateinit var lightsApi: LightsApi
     lateinit var uPnPAdapter: UPnPDeviceAdapter
-    var list: RecyclerView? = null
-    private var spinnyBoi: ProgressBar? = null
+    lateinit var list: RecyclerView
+    lateinit var spinnyBoi: ProgressBar
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val parent = inflater.inflate(R.layout.fragment_discovery, container, false)
         uPnPAdapter = UPnPDeviceAdapter(context!!)
-        list = parent.findViewById<RecyclerView>(R.id.list)?.apply {
+        list = parent.findViewById<RecyclerView>(R.id.list).apply {
             adapter = uPnPAdapter
             layoutManager = LinearLayoutManager(context)
-            visibility = View.INVISIBLE
         }
-        spinnyBoi = parent.findViewById<ProgressBar>(R.id.spinner)?.apply{
-            visibility = View.VISIBLE
-        }
+        spinnyBoi = parent.findViewById<ProgressBar>(R.id.spinner)
         return parent
     }
 
@@ -58,28 +54,38 @@ class DiscoveryFragment: BaseFragment(), MarkForInjection {
     }
 
     override fun bindToVM() {
-        vm.uPnPDevices.observe(this, {
-            if (uPnPAdapter.getItemCount() == 0) {
-                spinnyBoi?.animate()
-                        ?.alpha(0f)
-                        ?.setDuration(1000)
-                        ?.setInterpolator(AccelerateInterpolator())
-                        ?.start()
-                list?.setAlpha(0f)
-                list?.setVisibility(View.VISIBLE)
-                list?.animate()
-                        ?.alpha(1f)
-                        ?.setDuration(1000)
-                        ?.setStartDelay(1000)
-                        ?.setInterpolator(DecelerateInterpolator())
-                        ?.start()
+        vm.uPnPDevices.observe(this) {
+            it?.let { uPnPDataList ->
+                if (uPnPDataList.size > 0) {
+                    please(duration = Constants.STANDARD_ANIMATION_TIME) {
+                        animate(spinnyBoi) toBe {
+                            alpha(0f)
+                            scale(0.5f, 0.5f)
+                        }
+                    }.thenCouldYou(duration = Constants.STANDARD_ANIMATION_TIME) {
+                        animate(list) toBe {
+                            alpha(1f)
+                        }
+                    }.start()
+                } else {
+                    please {
+                        animate(spinnyBoi) toBe {
+                            alpha(1f)
+                            scale(1f, 1f)
+                        }
+                        animate(list) toBe {
+                            alpha(0f)
+                        }
+                    }.now()
+                }
+                try {
+                    uPnPDataList.last().let { uPnPAdapter.add(it) }
+                } catch (e: Exception) {
+                    e.toString().d()
+                }
             }
-            try {
-                it?.last()?.let { uPnPAdapter.add(it) }
-            } catch (e: Exception) {
-                Log.d(e.toString())
-            }
-        })
+
+        }
         vm.doWatch()
     }
 

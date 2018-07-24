@@ -6,4 +6,5 @@ package com.nicholasholley.dev.hueboat.util;
 
 public class Constants {
     public static final String NAV_KEY = "nav.key";
+    public static final long STANDARD_ANIMATION_TIME = 1000L;
 }

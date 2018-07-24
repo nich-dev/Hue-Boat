@@ -2,15 +2,12 @@ package com.nicholasholley.dev.hueboat.ui.discovery
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
-import android.widget.TextView
-import android.text.method.LinkMovementMethod
-import android.text.style.URLSpan
 import android.text.TextUtils
-import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
 import com.nicholasholley.dev.hueboat.R
-import com.nicholasholley.dev.hueboatsdk.data.network.upnp.SpannableBuilder
 import com.nicholasholley.dev.hueboatsdk.data.network.upnp.UPnPData
 import com.nicholasholley.dev.hueboatsdk.data.network.upnp.UPnPDeviceComparator
 import java.util.*
@@ -62,57 +59,26 @@ class UPnPDeviceAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, position: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_item_upnp_device, parent, false) ?: View(context))
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, position: Int): ViewHolder =
+        LayoutInflater.from(parent.context).inflate(R.layout.item_upnp_device_card, parent, false)!!.let {
+            ViewHolder(it)
+        }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = getItem(position)
-        if (holder.friendlyName != null) {
-            var friendlyName = item.scrubbedFriendlyName
-            if (TextUtils.isEmpty(friendlyName)) {
-                friendlyName = "[unnamed]"
-            }
-            holder.friendlyName!!.text = friendlyName
-        }
-        if (holder.location != null) {
-            val loc = item.location!!.toExternalForm()// Uncomment to obscure actual ip addresses for screenshots
-            // .replaceAll("[0-9]+\\.[0-9]+\\.[0-9]+", "192.258.1")
-            linkify(holder.location, null, loc)
-        }
-    }
-
-    private fun linkify(view: TextView?, str: CharSequence?, url: String) {
-        var str = str
-        if (TextUtils.isEmpty(str) && TextUtils.isEmpty(url)) {
-            view!!.visibility = View.GONE
-            return
-        }
-
-        view!!.visibility = View.VISIBLE
-        if (TextUtils.isEmpty(url)) {
-            view.text = str
-            return
-        }
-
-        if (TextUtils.isEmpty(str)) {
-            str = url
-        }
-
-        val builder = SpannableBuilder(view.context)
-        builder.append(str, URLSpan(url))
-
-        view.setText(builder.build())
-        view.movementMethod = LinkMovementMethod.getInstance()
+        holder.initialize(getItem(position))
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var friendlyName: TextView
-        var location: TextView
+        var friendlyName: TextView = view.findViewById(R.id.friendly_name) as TextView
+        var location: TextView = view.findViewById(R.id.location) as TextView
+        lateinit var data: UPnPData
 
-        init {
-            friendlyName = view.findViewById(R.id.friendly_name) as TextView
-            location = view.findViewById(R.id.location) as TextView
+        fun initialize(item: UPnPData) {
+            data = item
+            friendlyName.text = item.scrubbedFriendlyName?.let {
+                if (TextUtils.isEmpty(it)) "[unnamed]" else it.split("(")[0]
+            }
+            location.text = item.host
         }
 
         fun click(view: View) {
