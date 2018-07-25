@@ -12,5 +12,8 @@
     <!-- Networking -->
     <string name="base_url">https://e5067eea-ff07-45a2-a82e-88111f68de50.mock.pstmn.io</string>
     <string name="bridge_search">Bridge Search</string>
+    <string name="bridge_selection">Bridge Selection</string>
+    <string name="searching">Searching for Hue Bridges to link to this app</string>
+    <string name="choose_bridge">Select the correct Hue Bridge to link to this app</string>
     <!-- helper -->
 </resources>

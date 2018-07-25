@@ -6,17 +6,20 @@ import com.nicholasholley.dev.hueboat.util.log.Log
 import com.nicholasholley.dev.hueboat.util.rx.SchedulersFacade
 import com.nicholasholley.dev.hueboatsdk.data.network.upnp.UPnPData
 import com.nicholasholley.dev.hueboatsdk.data.network.upnp.UPnPDeviceFinder
+import io.reactivex.disposables.Disposable
 import javax.inject.Inject
 
 class DiscoveryVM @Inject constructor(
         private val schedulersFacade: SchedulersFacade
 ): ViewModel() {
+    private val disposable: Disposable
     val uPnPDevices: MutableLiveData<MutableList<UPnPData>> = MutableLiveData()
+    val fragmentState: MutableLiveData<DiscoveryFragment.State> = MutableLiveData()
 
-    fun doWatch() {
-        if (uPnPDevices.value == null) uPnPDevices.value = mutableListOf()
-        else uPnPDevices.value?.clear()
-        UPnPDeviceFinder().observe()
+    init {
+        fragmentState.value = DiscoveryFragment.State.SEARCH
+        uPnPDevices.value = mutableListOf()
+        disposable = UPnPDeviceFinder().observe()
                 .subscribeOn(schedulersFacade.io())
                 .filter {
                     try {
@@ -33,5 +36,10 @@ class DiscoveryVM @Inject constructor(
                     //Could write custom LiveData implementation also.
                     uPnPDevices.value = uPnPDevices.value
                 }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        disposable.dispose()
     }
 }

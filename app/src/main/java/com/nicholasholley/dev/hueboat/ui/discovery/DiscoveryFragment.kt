@@ -57,37 +57,47 @@ class DiscoveryFragment: BaseFragment(), MarkForInjection {
         vm.uPnPDevices.observe(this) {
             it?.let { uPnPDataList ->
                 if (uPnPDataList.size > 0) {
-                    please(duration = Constants.STANDARD_ANIMATION_TIME) {
-                        animate(spinnyBoi) toBe {
-                            alpha(0f)
-                            scale(0.5f, 0.5f)
-                        }
-                    }.thenCouldYou(duration = Constants.STANDARD_ANIMATION_TIME) {
-                        animate(list) toBe {
-                            alpha(1f)
-                        }
-                    }.start()
-                } else {
-                    please {
-                        animate(spinnyBoi) toBe {
-                            alpha(1f)
-                            scale(1f, 1f)
-                        }
-                        animate(list) toBe {
-                            alpha(0f)
-                        }
-                    }.now()
-                }
-                try {
+                    vm.fragmentState.value = State.SELECT
                     uPnPDataList.last().let { uPnPAdapter.add(it) }
-                } catch (e: Exception) {
-                    e.toString().d()
+                } else {
+                    vm.fragmentState.value = State.SEARCH
                 }
             }
-
         }
-        vm.doWatch()
+        vm.fragmentState.observe(this) {
+            when (it) {
+                State.SELECT -> animateSelect()
+                else -> animateInitial()
+            }
+        }
     }
+
+    private fun animateSelect() {
+        please(duration = Constants.STANDARD_ANIMATION_TIME) {
+            animate(spinnyBoi) toBe {
+                alpha(0f)
+                scale(0.5f, 0.5f)
+            }
+        }.thenCouldYou(duration = Constants.STANDARD_ANIMATION_TIME) {
+            animate(list) toBe {
+                alpha(1f)
+            }
+        }.start()
+    }
+
+    private fun animateInitial() {
+        please {
+            animate(spinnyBoi) toBe {
+                alpha(1f)
+                scale(1f, 1f)
+            }
+            animate(list) toBe {
+                alpha(0f)
+            }
+        }.now()
+    }
+
+    enum class State { SEARCH, SELECT, LINK, SUCCESS, FAIL }
 
     companion object {
         fun newInstance(): DiscoveryFragment = DiscoveryFragment()

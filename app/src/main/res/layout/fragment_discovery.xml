@@ -57,16 +57,16 @@
         android:background="@color/colorAccent"
         app:layout_constraintStart_toStartOf="@+id/title"
         app:layout_constraintEnd_toEndOf="@+id/title"
-        app:layout_constraintTop_toBottomOf="@id/list"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toTopOf="@+id/body"/>
 
     <TextView
         android:id="@+id/body"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Please select your correct Hue Bridge"
+        android:text="@string/searching"
         android:textAppearance="@style/AppBody"
-        app:layout_constraintTop_toBottomOf="@id/section_splitter_2"
+        android:paddingTop="@dimen/list_vertical_padding"
+        android:paddingBottom="@dimen/list_vertical_padding"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
