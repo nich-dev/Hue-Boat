@@ -53,7 +53,7 @@ class DiscoveryFragment: BaseFragment(), MarkForInjection {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         bindToVM()
-        delay(5000L) {
+        delay(2000L) {
             vm.fragmentState.value = State.SELECT
         }
     }
@@ -84,22 +84,14 @@ class DiscoveryFragment: BaseFragment(), MarkForInjection {
                 alpha(0f)
                 scale(0.5f, 0.5f)
             }
-            animate(body) toBe {
-                alpha(0f)
-            }
-            animate(title) toBe {
-                alpha(0f)
-            }
+            animate(body)  toBe { alpha(0f) }
+            animate(title) toBe { alpha(0f) }
+            animate(section_splitter_2) toBe { belowOf(section_splitter_1) }
         }.thenCouldYou(duration = Constants.STANDARD_ANIMATION_TIME) {
-            animate(list) toBe {
-                alpha(1f)
-            }
-            animate(body) toBe {
-                alpha(1f)
-            }
-            animate(title) toBe {
-                alpha(1f)
-            }
+            animate(list)  toBe { alpha(1f) }
+            animate(body)  toBe { alpha(1f) }
+            animate(title) toBe { alpha(1f) }
+            animate(section_splitter_2) toBe { belowOf(list) }
         }.let {
             doAnimate(it, State.SELECT, animate)
         }
@@ -111,15 +103,10 @@ class DiscoveryFragment: BaseFragment(), MarkForInjection {
                 alpha(1f)
                 scale(1f, 1f)
             }
-            animate(list) toBe {
-                alpha(0f)
-            }
-            animate(body) toBe {
-                alpha(1f)
-            }
-            animate(title) toBe {
-                alpha(1f)
-            }
+            animate(list)  toBe { alpha(0f) }
+            animate(body)  toBe { alpha(1f) }
+            animate(title) toBe { alpha(1f) }
+            animate(section_splitter_2) toBe { originalPosition() }
         }.let {
             doAnimate(it, State.SEARCH, animate)
         }
