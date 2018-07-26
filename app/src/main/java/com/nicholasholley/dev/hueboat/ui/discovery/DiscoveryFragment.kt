@@ -8,16 +8,16 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AccelerateInterpolator
-import android.view.animation.DecelerateInterpolator
 import android.widget.ProgressBar
+import com.github.florent37.kotlin.pleaseanimate.PleaseAnim
 import com.github.florent37.kotlin.pleaseanimate.please
 import com.nicholasholley.dev.hueboat.R
 import com.nicholasholley.dev.hueboat.di.MarkForInjection
 import com.nicholasholley.dev.hueboat.ui.common.BaseFragment
 import com.nicholasholley.dev.hueboat.util.Constants
+import com.nicholasholley.dev.hueboat.util.ext.delay
 import com.nicholasholley.dev.hueboat.util.ext.observe
-import com.nicholasholley.dev.hueboatsdk.util.d
+import kotlinx.android.synthetic.main.fragment_discovery.*
 import javax.inject.Inject
 
 /**
@@ -36,8 +36,10 @@ class DiscoveryFragment: BaseFragment(), MarkForInjection {
     lateinit var uPnPAdapter: UPnPDeviceAdapter
     lateinit var list: RecyclerView
     lateinit var spinnyBoi: ProgressBar
+    private var animateState: Boolean = true
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        animateState = false
         val parent = inflater.inflate(R.layout.fragment_discovery, container, false)
         uPnPAdapter = UPnPDeviceAdapter(context!!)
         list = parent.findViewById<RecyclerView>(R.id.list).apply {
@@ -51,6 +53,9 @@ class DiscoveryFragment: BaseFragment(), MarkForInjection {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         bindToVM()
+        delay(5000L) {
+            vm.fragmentState.value = State.SELECT
+        }
     }
 
     override fun bindToVM() {
@@ -66,26 +71,41 @@ class DiscoveryFragment: BaseFragment(), MarkForInjection {
         }
         vm.fragmentState.observe(this) {
             when (it) {
-                State.SELECT -> animateSelect()
-                else -> animateInitial()
+                State.SELECT -> stateSelect(animateState)
+                else -> stateInitial(false)
             }
+            animateState = true
         }
     }
 
-    private fun animateSelect() {
+    private fun stateSelect(animate: Boolean = true) {
         please(duration = Constants.STANDARD_ANIMATION_TIME) {
             animate(spinnyBoi) toBe {
                 alpha(0f)
                 scale(0.5f, 0.5f)
             }
+            animate(body) toBe {
+                alpha(0f)
+            }
+            animate(title) toBe {
+                alpha(0f)
+            }
         }.thenCouldYou(duration = Constants.STANDARD_ANIMATION_TIME) {
             animate(list) toBe {
                 alpha(1f)
             }
-        }.start()
+            animate(body) toBe {
+                alpha(1f)
+            }
+            animate(title) toBe {
+                alpha(1f)
+            }
+        }.let {
+            doAnimate(it, State.SELECT, animate)
+        }
     }
 
-    private fun animateInitial() {
+    private fun stateInitial(animate: Boolean = true) {
         please {
             animate(spinnyBoi) toBe {
                 alpha(1f)
@@ -94,7 +114,42 @@ class DiscoveryFragment: BaseFragment(), MarkForInjection {
             animate(list) toBe {
                 alpha(0f)
             }
-        }.now()
+            animate(body) toBe {
+                alpha(1f)
+            }
+            animate(title) toBe {
+                alpha(1f)
+            }
+        }.let {
+            doAnimate(it, State.SEARCH, animate)
+        }
+    }
+
+    private fun doAnimate(anim: PleaseAnim, state: State, animate: Boolean = true) {
+        if (animate){
+            anim.start()
+            delay { setText(state) }
+        } else {
+            anim.now()
+            setText(state)
+        }
+    }
+
+    private fun setText(state: State) {
+        when (state) {
+            State.SELECT -> setSelectText()
+            else -> setInitialText()
+        }
+    }
+
+    private fun setInitialText() {
+        title.setText(R.string.bridge_search)
+        body.setText(R.string.searching)
+    }
+
+    private fun setSelectText() {
+        title.setText(R.string.bridge_selection)
+        body.setText(R.string.choose_bridge)
     }
 
     enum class State { SEARCH, SELECT, LINK, SUCCESS, FAIL }
