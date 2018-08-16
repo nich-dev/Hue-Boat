@@ -3,11 +3,9 @@ package com.nicholasholley.dev.hueboat
 import android.app.Activity
 import android.app.Application
 import android.app.Service
-import com.dukeenergy.etrac.di.AppInjector
+import com.nicholasholley.dev.hueboat.di.AppInjector
 import com.facebook.stetho.Stetho
 import com.nicholasholley.dev.hueboat.util.log.FirebaseTree
-import com.philips.lighting.hue.sdk.wrapper.HueLog
-import com.philips.lighting.hue.sdk.wrapper.Persistence
 import com.uphyca.stetho_realm.RealmInspectorModulesProvider
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -23,21 +21,12 @@ class HueBoatApp: Application(), HasActivityInjector, HasServiceInjector {
     @Inject lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
     @Inject lateinit var mServiceInjector: DispatchingAndroidInjector<Service>
 
-    init {
-        System.loadLibrary(resources.getString(R.string.hue_sdk))
-    }
-
     override fun onCreate() {
         AppInjector.init(this)
         super.onCreate()
-        Persistence.setStorageLocation(
-                filesDir.absolutePath,
-                resources.getString(R.string.hue_sdk_location)
-        )
         Realm.init(this)
         if (CLEAR_REALM) clearRealm()
         if (BuildConfig.BUILD_TYPE == "debug"){
-            HueLog.setConsoleLogLevel(HueLog.LogLevel.DEBUG)
             Timber.plant(Timber.DebugTree())
             Timber.plant(ThrowErrorTree())
             Stetho.initialize(
@@ -47,7 +36,6 @@ class HueBoatApp: Application(), HasActivityInjector, HasServiceInjector {
                                     RealmInspectorModulesProvider.builder(this).withLimit(STETHO_LIMIT).build()
                             ).build());
         } else {
-            HueLog.setConsoleLogLevel(HueLog.LogLevel.INFO)
             Timber.plant(FirebaseTree())
         }
     }

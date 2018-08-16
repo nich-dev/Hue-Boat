@@ -8,28 +8,52 @@ import timber.log.Timber
 class Log {
     companion object {
         fun d(msg: String, vararg args: Any?){
-            Timber.d(msg, args)
+            try {
+                Timber.d(msg, args)
+            } catch (e: Exception) {
+            }
         }
         fun d(throwable: Throwable, msg: String?, vararg args: Any?){
-            Timber.d(throwable, msg, args)
+            try {
+                Timber.d(throwable, msg, args)
+            } catch (e: Exception) {
+            }
         }
         fun i(msg: String, vararg args: Any?){
-            Timber.i(msg, args)
+            try {
+                Timber.i(msg, args)
+            } catch (e: Exception) {
+            }
         }
         fun i(throwable: Throwable, msg: String?, vararg args: Any?){
-            Timber.i(throwable, msg, args)
+            try {
+                Timber.i(throwable, msg, args)
+            } catch (e: Exception) {
+            }
         }
         fun w(msg: String, vararg args: Any?){
-            Timber.w(msg, args)
+            try {
+                Timber.w(msg, args)
+            } catch (e: Exception) {
+            }
         }
         fun w(throwable: Throwable, msg: String?, vararg args: Any?){
-            Timber.w(throwable, msg, args)
+            try {
+                Timber.w(throwable, msg, args)
+            } catch (e: Exception) {
+            }
         }
         fun e(msg: String, vararg args: Any?){
-            Timber.e(msg, args)
+            try {
+                Timber.e(msg, args)
+            } catch (e: Exception) {
+            }
         }
         fun e(throwable: Throwable, msg: String?, vararg args: Any?){
-            Timber.e(throwable, msg, args)
+            try {
+                Timber.e(throwable, msg, args)
+            } catch (e: Exception) {
+            }
         }
     }
 }

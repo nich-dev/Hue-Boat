@@ -1,8 +1,10 @@
-package com.dukeenergy.etrac.di
+package com.nicholasholley.dev.hueboat.di
 
 import android.app.Application
 import com.dukeenergy.etrac.di.modules.*
 import com.nicholasholley.dev.hueboat.HueBoatApp
+import com.nicholasholley.dev.hueboat.di.modules.ActivityModule
+import com.nicholasholley.dev.hueboat.di.modules.DataModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule
@@ -15,7 +17,10 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = arrayOf(
         AndroidSupportInjectionModule::class,
-        AppModule::class
+        AppModule::class,
+        ActivityModule::class,
+        ViewModelModule::class,
+        DataModule::class
 ))
 interface AppComponent {
     @Component.Builder

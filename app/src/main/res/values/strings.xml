@@ -5,9 +5,15 @@
     <string name="hue_sdk">huesdk</string>
     <string name="hue_sdk_location">persistence</string>
     <!-- main activity -->
-    <string name="title_activity_main">Dashboard</string>
+    <string name="title_activity_main">Hue Boat</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_settings">Settings</string>
+    <!-- Networking -->
+    <string name="base_url">https://e5067eea-ff07-45a2-a82e-88111f68de50.mock.pstmn.io</string>
+    <string name="bridge_search">Bridge Search</string>
+    <string name="bridge_selection">Bridge Selection</string>
+    <string name="searching">Searching for Hue Bridges to link to this app</string>
+    <string name="choose_bridge">Select the correct Hue Bridge to link to this app</string>
     <!-- helper -->
 </resources>

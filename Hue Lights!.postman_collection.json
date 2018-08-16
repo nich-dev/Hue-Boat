@@ -1,0 +1,2332 @@
+{
+	"info": {
+		"_postman_id": "9e172c14-c12c-4aaa-936b-b5cede18147f",
+		"name": "Hue Lights!",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Lights",
+			"description": "",
+			"item": [
+				{
+					"name": "Lights All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/lights",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"lights"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "ea4990d1-8dfa-4d93-9201-a961a618c1ea",
+							"name": "Default",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/lights/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"lights",
+										""
+									]
+								}
+							},
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n\"1\": {\r\n        \"state\": {\r\n            \"on\": false,\r\n            \"bri\": 1,\r\n            \"hue\": 33761,\r\n            \"sat\": 254,\r\n            \"effect\": \"none\",\r\n            \"xy\": [\r\n                0.3171,\r\n                0.3366\r\n            ],\r\n            \"ct\": 159,\r\n            \"alert\": \"none\",\r\n            \"colormode\": \"xy\",\r\n            \"mode\": \"homeautomation\",\r\n            \"reachable\": true\r\n        },\r\n        \"swupdate\": {\r\n            \"state\": \"noupdates\",\r\n            \"lastinstall\": \"2017-10-15T12:07:34\"\r\n        },\r\n        \"type\": \"Extended color light\",\r\n        \"name\": \"Hue color lamp 7\",\r\n        \"modelid\": \"LCT001\",\r\n        \"manufacturername\": \"Philips\",\r\n        \"productname\": \"Hue color lamp\",\r\n        \"capabilities\": {\r\n            \"certified\": true,\r\n            \"control\": {\r\n                \"mindimlevel\": 5000,\r\n                \"maxlumen\": 600,\r\n                \"colorgamuttype\": \"B\",\r\n                \"colorgamut\": [\r\n                    [\r\n                        0.675,\r\n                        0.322\r\n                    ],\r\n                    [\r\n                        0.409,\r\n                        0.518\r\n                    ],\r\n                    [\r\n                        0.167,\r\n                        0.04\r\n                    ]\r\n                ],\r\n                \"ct\": {\r\n                    \"min\": 153,\r\n                    \"max\": 500\r\n                }\r\n            },\r\n            \"streaming\": {\r\n                \"renderer\": true,\r\n                \"proxy\": false\r\n            }\r\n        },\r\n        \"config\": {\r\n            \"archetype\": \"sultanbulb\",\r\n            \"function\": \"mixed\",\r\n            \"direction\": \"omnidirectional\"\r\n        },\r\n        \"uniqueid\": \"00:17:88:01:00:bd:c7:b9-0b\",\r\n        \"swversion\": \"5.105.0.21169\"\r\n    },\r\n    \"2\": {\r\n        \"state\": {\r\n            \"on\": false,\r\n            \"bri\": 1,\r\n            \"hue\": 35610,\r\n            \"sat\": 237,\r\n            \"effect\": \"none\",\r\n            \"xy\": [\r\n                0.1768,\r\n                0.395\r\n            ],\r\n            \"ct\": 153,\r\n            \"alert\": \"none\",\r\n            \"colormode\": \"xy\",\r\n            \"mode\": \"homeautomation\",\r\n            \"reachable\": true\r\n        },\r\n        \"swupdate\": {\r\n            \"state\": \"noupdates\",\r\n            \"lastinstall\": \"2017-10-18T12:50:40\"\r\n        },\r\n        \"type\": \"Extended color light\",\r\n        \"name\": \"Hue lightstrip plus 1\",\r\n        \"modelid\": \"LST002\",\r\n        \"manufacturername\": \"Philips\",\r\n        \"productname\": \"Hue lightstrip plus\",\r\n        \"capabilities\": {\r\n            \"certified\": true,\r\n            \"control\": {\r\n                \"mindimlevel\": 40,\r\n                \"maxlumen\": 1600,\r\n                \"colorgamuttype\": \"C\",\r\n                \"colorgamut\": [\r\n                    [\r\n                        0.6915,\r\n                        0.3083\r\n                    ],\r\n                    [\r\n                        0.17,\r\n                        0.7\r\n                    ],\r\n                    [\r\n                        0.1532,\r\n                        0.0475\r\n                    ]\r\n                ],\r\n                \"ct\": {\r\n                    \"min\": 153,\r\n                    \"max\": 500\r\n                }\r\n            },\r\n            \"streaming\": {\r\n                \"renderer\": true,\r\n                \"proxy\": true\r\n            }\r\n        },\r\n        \"config\": {\r\n            \"archetype\": \"huelightstrip\",\r\n            \"function\": \"mixed\",\r\n            \"direction\": \"omnidirectional\"\r\n        },\r\n        \"uniqueid\": \"00:17:88:01:02:15:97:46-0b\",\r\n        \"swversion\": \"5.105.0.21169\"\r\n    }\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Lights New",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/lights/new",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"lights",
+								"new"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "ad982596-d6fd-47cd-83a0-9dd87d9ad09b",
+							"name": "Lights New",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/lights/new",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"lights",
+										"new"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\r\n\t\"7\": {\"name\": \"Hue Lamp 7\"},\r\n\t\"8\": {\"name\": \"Hue Lamp 8\"},\r\n\t\"lastscan\": \"2012-10-29T12:00:00\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Lights Search",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/lights",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"lights"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "7fd92be7-3660-4cbb-ac99-504da7dbcc68",
+							"name": "Lights Search",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"deviceid\":[\"45AF34\",\"543636\",\"34AFBE\"]} "
+								},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/lights",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"lights"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[ { \"success\": { \"/lights\": \"Searching for new devices\" } } ]"
+						}
+					]
+				},
+				{
+					"name": "Lights Single",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/lights/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"lights",
+								"{{id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "8cafca0d-611e-4dd6-b7f0-bdb787212d04",
+							"name": "Lights Single",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/lights/{{id}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"lights",
+										"{{id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\r\n\t\"state\": {\r\n\t\t\"on\": false,\r\n\t\t\"bri\": 1,\r\n\t\t\"hue\": 12594,\r\n\t\t\"sat\": 251,\r\n\t\t\"effect\": \"none\",\r\n\t\t\"xy\": [\r\n\t\t\t0.5474,\r\n\t\t\t0.4368\r\n\t\t],\r\n\t\t\"alert\": \"none\",\r\n\t\t\"colormode\": \"xy\",\r\n\t\t\"mode\": \"homeautomation\",\r\n\t\t\"reachable\": true\r\n\t},\r\n\t\"swupdate\": {\r\n\t\t\"state\": \"noupdates\",\r\n\t\t\"lastinstall\": \"2017-12-13T01:59:13\"\r\n\t},\r\n\t\"type\": \"Color light\",\r\n\t\"name\": \"Hue bloom 1\",\r\n\t\"modelid\": \"LLC011\",\r\n\t\"manufacturername\": \"Philips\",\r\n\t\"productname\": \"Hue bloom\",\r\n\t\"capabilities\": {\r\n\t\t\"certified\": true,\r\n\t\t\"control\": {\r\n\t\t\t\"mindimlevel\": 10000,\r\n\t\t\t\"maxlumen\": 120,\r\n\t\t\t\"colorgamuttype\": \"A\",\r\n\t\t\t\"colorgamut\": [\r\n\t\t\t\t[\r\n\t\t\t\t\t0.704,\r\n\t\t\t\t\t0.296\r\n\t\t\t\t],\r\n\t\t\t\t[\r\n\t\t\t\t\t0.2151,\r\n\t\t\t\t\t0.7106\r\n\t\t\t\t],\r\n\t\t\t\t[\r\n\t\t\t\t\t0.138,\r\n\t\t\t\t\t0.08\r\n\t\t\t\t]\r\n\t\t\t]\r\n\t\t},\r\n\t\t\"streaming\": {\r\n\t\t\t\"renderer\": true,\r\n\t\t\t\"proxy\": false\r\n\t\t}\r\n\t},\r\n\t\"config\": {\r\n\t\t\"archetype\": \"huebloom\",\r\n\t\t\"function\": \"decorative\",\r\n\t\t\"direction\": \"upwards\"\r\n\t},\r\n\t\"uniqueid\": \"00:17:88:01:00:c5:3b:e3-0b\",\r\n\t\"swversion\": \"5.105.1.21778\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Lights Rename",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/lights/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"lights",
+								"{{id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "d76356b5-7edd-4e5c-b843-46504055ccca",
+							"name": "Lights Rename",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"name\":\"Bedroom Light\"}"
+								},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/lights/{{id}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"lights",
+										"{{id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[{\"success\":{\"/lights/1/name\":\"Bedroom Light\"}}]"
+						}
+					]
+				},
+				{
+					"name": "Lights Change State",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/lights/{{id}}/state",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"lights",
+								"{{id}}",
+								"state"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "117ae89a-3040-4566-9387-0f5b529a4f61",
+							"name": "Lights Change State",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"hue\": 50000,\r\n\t\"on\": true,\r\n\t\"bri\": 200\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/lights/{{id}}/state",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"lights",
+										"{{id}}",
+										"state"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[\r\n\t{\"success\":{\"/lights/1/state/bri\":200}},\r\n\t{\"success\":{\"/lights/1/state/on\":true}},\r\n\t{\"success\":{\"/lights/1/state/hue\":50000}}\r\n]"
+						}
+					]
+				},
+				{
+					"name": "Lights Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/lights/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"lights",
+								"{{id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "555a43fe-6bfe-4215-8a80-facd3ac99987",
+							"name": "Lights Delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/lights/{{id}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"lights",
+										"{{id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[\n    {\n        \"success\": \"/lights/1 deleted.\"\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Groups",
+			"description": "",
+			"item": [
+				{
+					"name": "Groups All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/groups",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"groups"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "4db0502c-d35b-4f2f-8306-f9f0f8c2c309",
+							"name": "Groups All",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/groups",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"groups"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\r\n    \"1\": {\r\n        \"name\": \"Group 1\",\r\n        \"lights\": [\r\n            \"1\",\r\n            \"2\"\r\n        ],\r\n        \"type\": \"LightGroup\",\r\n        \"action\": {\r\n            \"on\": true,\r\n            \"bri\": 254,\r\n            \"hue\": 10000,\r\n            \"sat\": 254,\r\n            \"effect\": \"none\",\r\n            \"xy\": [\r\n                0.5,\r\n                0.5\r\n            ],\r\n            \"ct\": 250,\r\n            \"alert\": \"select\",\r\n            \"colormode\": \"ct\"\r\n        }\r\n    },\r\n    \"2\": {\r\n        \"name\": \"Group 2\",\r\n        \"lights\": [\r\n            \"3\",\r\n            \"4\",\r\n            \"5\"\r\n        ],\r\n        \"type\": \"LightGroup\",\r\n        \"action\": {\r\n            \"on\": true,\r\n            \"bri\": 153,\r\n            \"hue\": 4345,\r\n            \"sat\": 254,\r\n            \"effect\": \"none\",\r\n            \"xy\": [\r\n                0.5,\r\n                0.5\r\n            ],\r\n            \"ct\": 250,\r\n            \"alert\": \"select\",\r\n            \"colormode\": \"ct\"\r\n        }\r\n    }\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Groups Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/groups",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"groups"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "8ab58303-8af1-4fce-9ac2-b0d60b656a4d",
+							"name": "Groups Create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Living room\",\r\n    \"type\": \"Room\",\r\n    \"class\": \"Living room\",\r\n    \"lights\": [\r\n        \"3\",\r\n        \"4\"\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/groups",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"groups"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[{\"success\":{\"id\":\"1\"}}]\r\n  "
+						}
+					]
+				},
+				{
+					"name": "Groups Single",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/groups/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"groups",
+								"{{id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "4f38639c-17e2-44e8-a525-f72965955f81",
+							"name": "Groups Single",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/groups/{{id}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"groups",
+										"{{id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\r\n\t\"action\": {\r\n\t\t\"on\": true,\r\n\t\t\"hue\": 0,\r\n\t\t\"effect\": \"none\",\r\n\t\t\"bri\": 100,\r\n\t\t\"sat\": 100,\r\n\t\t\"ct\": 500,\r\n\t\t\"xy\": [0.5, 0.5]\r\n\t},\r\n\t\"lights\": [\r\n\t\t\"1\",\r\n\t\t\"2\"\r\n\t],\r\n    \"state\":{\"any_on\":true,\r\n             \"all_on\":true},\r\n    \"type\":\"Room\",\r\n    \"class\":\"Bedroom\",\r\n    \"name\":\"Master bedroom\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Groups Change Attributes",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/groups/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"groups",
+								"{{id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "b3ceaa9c-a589-477d-80a1-58b3f5681850",
+							"name": "Groups Change Attributes",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"name\":\"Bedroom\",\"lights\":[\"1\"]}"
+								},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/groups/{{id}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"groups",
+										"{{id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[\r\n\t{\"success\":{\"/groups/1/lights\":[\"1\"]}},\r\n\t{\"success\":{\"/groups/1/name\":\"Bedroom\"}}\r\n]"
+						}
+					]
+				},
+				{
+					"name": "Groups Set State",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/groups/{{id}}/action",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"groups",
+								"{{id}}",
+								"action"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "dc90cf09-67cb-4409-9f87-d36f42257924",
+							"name": "Groups Set State Scene",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"scene\": \"AB34EF5\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/groups/{{id}}/action",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"groups",
+										"{{id}}",
+										"action"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[\r\n{\"success\":{\"address\":\"/groups/1/action/scene\", \"value\": \"AB34EF5\"}} \r\n]"
+						},
+						{
+							"id": "0101f6c7-f2dc-4a53-a0ad-79cf393769be",
+							"name": "Groups Set State Manual",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"on\": true,\r\n\t\"hue\": 2000,\r\n\t\"effect\": \"colorloop\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/groups/{{id}}/action",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"groups",
+										"{{id}}",
+										"action"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[\r\n{\"success\":{ \"address\": \"/groups/1/action/on\", \"value\": true}},\r\n{\"success\":{ \"address\": \"/groups/1/action/effect\", \"value\":\"colorloop\"}},\r\n{\"success\":{ \"address\": \"/groups/1/action/hue\", \"value\":6000}}\r\n]"
+						}
+					]
+				},
+				{
+					"name": "Groups Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/groups/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"groups",
+								"{{id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "c741cea4-df38-40c1-b260-bf922ae038ee",
+							"name": "Groups Delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/groups/{{id}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"groups",
+										"{{id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[{\r\n\t\"success\": \"/groups/1 deleted.\"\r\n}]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Schedules",
+			"description": "",
+			"item": [
+				{
+					"name": "Schedules All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/schedules",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"schedules"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "0e68d92b-d961-471c-9f98-736ff6e98c88",
+							"name": "Schedules All",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/schedules",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"schedules"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\r\n    \"1\": {\r\n        \"name\": \"Timer\",\r\n        \"description\": \"\",\r\n        \"command\": {\r\n            \"address\": \"/api/s95jtYH8HUVWNkCO/groups/0/action\",\r\n            \"body\": {\r\n                \"scene\": \"02b12e930-off-0\"\r\n            },\r\n            \"method\": \"PUT\"\r\n        },\r\n        \"time\": \"PT00:01:00\",\r\n        \"created\": \"2014-06-23T13:39:16\",\r\n        \"status\": \"disabled\",\r\n        \"autodelete\": false,\r\n        \"starttime\": \"2014-06-23T13:39:16\"\r\n    },\r\n    \"2\": {\r\n        \"name\": \"Alarm\",\r\n        \"description\": \"\",\r\n        \"command\": {\r\n            \"address\": \"/api/s95jtYH8HUVWNkCO/groups/0/action\",\r\n            \"body\": {\r\n                \"scene\": \"02b12e930-off-0\"\r\n            },\r\n            \"method\": \"PUT\"\r\n        },\r\n        \"localtime\": \"2014-06-23T19:52:00\",\r\n        \"time\": \"2014-06-23T13:52:00\",\r\n        \"created\": \"2014-06-23T13:38:57\",\r\n        \"status\": \"disabled\",\r\n        \"autodelete\": false\r\n    }\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Schedules Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/schedules",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"schedules"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "28e16f39-18cc-4e47-b2b5-53887db76352",
+							"name": "Schedules Create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"name\": \"Wake up\",\r\n\t\"description\": \"My wake up alarm\",\r\n\t\"command\": {\r\n\t\t\"address\": \"/api/<username>/groups/1/action\",\r\n\t\t\"method\": \"PUT\",\r\n\t\t\"body\": {\r\n\t\t\t\"on\": true\r\n\t\t}\r\n\t},\r\n\t\"localtime\": \"2015-06-30T14:24:40\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/schedules",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"schedules"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[{\r\n\t\"success\":{\"id\": \"2\"}\r\n}]"
+						}
+					]
+				},
+				{
+					"name": "Schedules Single",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/schedules/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"schedules",
+								"{{id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "9ce2d159-5ee1-4938-bf75-23bc789f98fb",
+							"name": "Schedules Single",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/schedules/{{id}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"schedules",
+										"{{id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\r\n\t\"name\": \"Wake up\",\r\n\t\"description\": \"My wake up alarm\",\r\n\t\"command\": {\r\n\t\t\"address\": \"/api/<username>/groups/1/action\",\r\n\t\t\"method\": \"PUT\",\r\n\t\t\"body\": {\r\n\t\t\t\"on\": true\r\n\t\t}\r\n\t},\r\n\t\"time\": \"W124/T06:00:00\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Schedule Change Attributes",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/schedules/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"schedules",
+								"{{id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "41da3b8b-3b21-4f81-a21e-82e778c7b44f",
+							"name": "Schedule Change Attributes",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"name\": \"Wake up\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/schedules/{{id}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"schedules",
+										"{{id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[\r\n\t{ \"success\": {\"/schedules/1/name\": \"Wake up\"}}\r\n]"
+						}
+					]
+				},
+				{
+					"name": "Schedule Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/schedules/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"schedules",
+								"{{id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "7b12b3af-fbf1-4220-8ffa-6ad92a21f844",
+							"name": "Schedule Delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/schedules/{{id}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"schedules",
+										"{{id}}"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "",
+									"name": "Access-Control-Allow-Credentials",
+									"description": "Indicates whether or not the response to the request can be exposed when the credentials flag is true. When used as part of a response to a preflight request, this indicates whether or not the actual request can be made using credentials."
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "",
+									"name": "Access-Control-Allow-Methods",
+									"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"name": "Access-Control-Allow-Origin",
+									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "",
+									"name": "Access-Control-Expose-Headers",
+									"description": "Lets a server whitelist headers that browsers are allowed to access."
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "166",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 May 2018 22:29:57 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a6-HzPKD62Z1VhCddlaTrn75g\"",
+									"name": "ETag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "Server",
+									"value": "nginx",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"name": "Vary",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								}
+							],
+							"cookie": [],
+							"body": "[\r\n\t{\"success\": \"/schedules/1 deleted.\"}\r\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Scene",
+			"description": "",
+			"item": [
+				{
+					"name": "Scenes All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/scenes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"scenes"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "28aa768b-21a1-40a4-80c0-807f273a633d",
+							"name": "Scenes All",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/scenes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"scenes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\r\n\t\"4e1c6b20e-on-0\": {\r\n\t\t\"name\": \"Kathy on 1449133269486\",\r\n\t\t\"lights\": [\"2\", \"3\"],\r\n\t\t\"owner\": \"ffffffffe0341b1b376a2389376a2389\",\r\n\t\t\"recycle\": true,\r\n\t\t\"locked\": false,\r\n\t\t\"appdata\": {},\r\n\t\t\"picture\": \"\",\r\n\t\t\"lastupdated\": \"2015-12-03T08:57:13\",\r\n\t\t\"version\": 1\r\n\t},\r\n\t\"3T2SvsxvwteNNys\": {\r\n\t\t\"name\": \"Cozy dinner\",\r\n\t\t\"lights\": [\"1\", \"2\"],\r\n\t\t\"owner\": \"ffffffffe0341b1b376a2389376a2389\",\r\n\t\t\"recycle\": true,\r\n\t\t\"locked\": false,\r\n\t\t\"appdata\": {\r\n\t\t\t\"version\": 1,\r\n\t\t\t\"data\": \"myAppData\"\r\n\t\t},\r\n\t\t\"picture\": \"\",\r\n\t\t\"lastupdated\": \"2015-12-03T10:09:22\",\r\n\t\t\"version\": 2\r\n\t}\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Scenes Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/scenes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"scenes"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "854f29fe-8ef1-49a1-a28d-7014b0d95efc",
+							"name": "Scenes Create w Pic",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"lights\":[\"3\",\"2\",\"5\"],\"recycle\":true,\"name\":\"My Scene\",\"appdata\":{\"data\":\"My App Data\",\"version\":1},\"picture\":\"ABC123DEF456\" }"
+								},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/scenes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"scenes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[\r\n    {\r\n        \"success\": {\r\n            \"id\": \"Abc123Def456Ghi\"\r\n        }\r\n    }\r\n]"
+						},
+						{
+							"id": "e69da0fd-7c5b-4da0-8a11-e93101cdc0a5",
+							"name": "Scenes Create Basic",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"name\":\"Romantic dinner\", \"lights\":[\"1\",\"2\"], \"recycle\":true, \"transitiontime\":50}"
+								},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/scenes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"scenes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[\r\n    {\r\n        \"success\": {\r\n            \"id\": \"Abc123Def456Ghi\"\r\n        }\r\n    }\r\n]"
+						}
+					]
+				},
+				{
+					"name": "Scene Modify",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/scenes/{{id}}/lightstates/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"scenes",
+								"{{id}}",
+								"lightstates",
+								"{{id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "96b3793c-7ec8-44e3-ae63-072374f3b3a9",
+							"name": "Scene Modify",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"on\":true,\"ct\":200}"
+								},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/scenes/{{id}}/lightstates/{{id}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"scenes",
+										"{{id}}",
+										"lightstates",
+										"{{id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[ \r\n  {\"success\":{\"address\":\"/scenes/ab341ef24/lights/1/state/on\", \"value\":true}},\r\n  {\"success\":{\"address\":\"/scenes/ab341ef24/lights/1/state/ct\", \"value\":200}}\r\n] "
+						}
+					]
+				},
+				{
+					"name": "Scene Modify Basic",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/scenes/{{id}}/lightstates/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"scenes",
+								"{{id}}",
+								"lightstates",
+								"{{id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "10556a05-43f5-477c-81e3-ac8c5f4c795b",
+							"name": "Scene Modify B",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \"name\":\"Cozy dinner\", \"lights\":[\"3\",\"2\"], \"storelightstate\": true}"
+								},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/scenes/{{id}}/lightstates/{{id}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"scenes",
+										"{{id}}",
+										"lightstates",
+										"{{id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[{\r\n\t\"success\": {\r\n\t\t\"/scenes/74bc26d5f-on-0/name\": \"Cozy dinner\"\r\n\t}\r\n}, {\r\n\t\"success\": {\r\n\t\t\"/scenes/74bc26d5f-on-0/storelightstate\": true\r\n\t}\r\n}, {\r\n\t\"success\": {\r\n\t\t\"/scenes/74bc26d5f-on-0/lights\": [\"2\", \"3\"]\r\n\t}\r\n}]"
+						}
+					]
+				},
+				{
+					"name": "Scenes Single",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/scenes/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"scenes",
+								"{{id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "feeadb9b-e380-4ef9-81a6-9245ca9ce6e5",
+							"name": "Scenes Single",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/scenes/{{id}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"scenes",
+										"{{id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\r\n\r\n\t\"name\": \"Cozy dinner\",\r\n\t\"lights\": [\"1\"],\r\n\t\"owner\": \"newdeveloper\",\r\n\t\"recycle\": true,\r\n\t\"locked\": false,\r\n\t\"appdata\": {},\r\n\t\"picture\": \"\",\r\n\t\"lastupdated\": \"2015-12-03T10:09:22\",\r\n\t\"version\": 2,\r\n\t\"lightstates\": {\r\n\t\t\"1\": {\r\n\t\t\t\"on\": true,\r\n\t\t\t\"bri\": 237,\r\n\t\t\t\"xy\": [0.5806, 0.3903]\r\n\t\t}\r\n\t}\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Scenes Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/scenes/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"scenes",
+								"{{id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "20c58016-6419-4449-b9bb-2a8b2144153f",
+							"name": "Scenes Delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/scenes/{{id}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"scenes",
+										"{{id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[{\"success\":\"/scenes/3T2SvsxvwteNNys deleted\"}]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Sensors",
+			"description": "",
+			"item": [
+				{
+					"name": "Sensors All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/sensors",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"sensors"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "7a6ef209-58f5-4b24-9ca6-25e1fc26e097",
+							"name": "Sensors All",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/sensors",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"sensors"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\r\n\r\n    \"1\": {\r\n        \"state\": {\r\n            \"daylight\": false,\r\n            \"lastupdated\": \"2014-06-27T07:38:51\"\r\n        },\r\n        \"config\": {\r\n            \"on\": true,\r\n            \"long\": \"none\",\r\n            \"lat\": \"none\",\r\n            \"sunriseoffset\": 50,\r\n            \"sunsetoffset\": 50\r\n        },\r\n        \"name\": \"Daylight\",\r\n        \"type\": \"Daylight\",\r\n        \"modelid\": \"PHDL00\",\r\n        \"manufacturername\": \"Philips\",\r\n        \"swversion\": \"1.0\"\r\n    },\r\n    \"2\": {\r\n        \"state\": {\r\n            \"buttonevent\": 0,\r\n            \"lastupdated\": \"none\"\r\n        },\r\n        \"config\": {\r\n            \"on\": true\r\n        },\r\n        \"name\": \"Tap Switch 2\",\r\n        \"type\": \"ZGPSwitch\",\r\n        \"modelid\": \"ZGPSWITCH\",\r\n        \"manufacturername\": \"Philips\",\r\n        \"uniqueid\": \"00:00:00:00:00:40:03:50-f2\"\r\n    }\r\n\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Sensors Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/sensors",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"sensors"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "51a6fa79-2c23-44c5-a28c-0fa3906feddf",
+							"name": "Sensors Find",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/sensors",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"sensors"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[ { \"success\": { \"/sensors\": \"Searching for new devices\" } } ]"
+						},
+						{
+							"id": "34fdc11f-4bb0-4901-bf53-dd9c43d4e5a3",
+							"name": "Sensors Create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"state\": {\r\n        \"presence\": false\r\n    },\r\n    \"name\": \"IP Camera living room\",\r\n    \"modelid\": \"IPSENSOR\",\r\n    \"swversion\": \"1.0\",\r\n    \"type\": \"CLIPPresence\",\r\n    \"uniqueid\": \"12345678\",\r\n    \"manufacturername\": \"TheManufacturer\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/sensors",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"sensors"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[{\r\n    \"success\":{\"id\": \"4\"}\r\n}]"
+						}
+					]
+				},
+				{
+					"name": "Sensors New",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/sensors/new",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"sensors",
+								"new"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "fda5a24c-8c78-4e57-b676-85c36e73bf91",
+							"name": "Sensors New",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/sensors/new",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"sensors",
+										"new"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "",
+									"name": "Access-Control-Allow-Credentials",
+									"description": "Indicates whether or not the response to the request can be exposed when the credentials flag is true. When used as part of a response to a preflight request, this indicates whether or not the actual request can be made using credentials."
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "",
+									"name": "Access-Control-Allow-Methods",
+									"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"name": "Access-Control-Allow-Origin",
+									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "",
+									"name": "Access-Control-Expose-Headers",
+									"description": "Lets a server whitelist headers that browsers are allowed to access."
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "166",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 May 2018 22:56:24 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a6-HzPKD62Z1VhCddlaTrn75g\"",
+									"name": "ETag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "Server",
+									"value": "nginx",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"name": "Vary",
+									"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n\t\"7\": {\"name\": \"Hue Tap 1\"},\r\n\t\"8\": {\"name\": \" Button 3\"},\r\n    \"lastscan\":\"2013-05-22T10:24:00\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Sensors Single",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/sensors/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"sensors",
+								"{{id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "85a132e0-4338-4ff9-b95b-4676ef44f363",
+							"name": "Sensors Single",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/sensors/{{id}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"sensors",
+										"{{id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\r\n\"state\":{ \r\n        \"buttonevent\": 34, \r\n        \"lastupdated\":\"2013-03-25T13:32:34\"\r\n},\r\n\"name\": \"Wall tap 1\", \r\n\"modelid\":\"ZGPSWITCH\",  \r\n\"uniqueid\":\"01:23:45:67:89:AB-12\",\r\n\"manufacturername\": \"Philips\",\r\n\"swversion\":\"1.0\", \r\n\"type\": \"ZGPSwitch\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Sensors Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/sensors/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"sensors",
+								"{{id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "9cfb409e-a01c-4894-8a0e-a8ab3f2d146d",
+							"name": "Sensors Update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"name\":\"Bedroom Tap\"}"
+								},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/sensors/{{id}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"sensors",
+										"{{id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "  [{\"success\":{\"/sensors/2/name\":\"Bedroom Tap\"}}]"
+						}
+					]
+				},
+				{
+					"name": "Sensors Change Config",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/sensors/{{id}}/config",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"sensors",
+								"{{id}}",
+								"config"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "c1198b21-287b-46d8-8f36-7b828650eaf7",
+							"name": "Sensors Change Config",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n   \"on\":true \r\n   }\r\n "
+								},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/sensors/{{id}}/config",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"sensors",
+										"{{id}}",
+										"config"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[\r\n    {\"success\":{\"/sensors/2/config/on\":true}}\r\n]"
+						}
+					]
+				},
+				{
+					"name": "Sensors Change State",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/sensors/{{id}}/state",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"sensors",
+								"{{id}}",
+								"state"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "1ebb1cbe-54ea-4fe0-8621-cc9a0bcae183",
+							"name": "Sensors Change State",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n  \"presence\":false\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/sensors/{{id}}/state",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"sensors",
+										"{{id}}",
+										"state"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[\r\n   {\"success\":{\"/sensors/1/state/presence\": false}}\r\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Rules",
+			"description": "",
+			"item": [
+				{
+					"name": "Rules All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/rules",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"rules"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "e0afbd66-0d60-45ef-bc12-0a73acdde84e",
+							"name": "Rules All",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/rules",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"rules"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\r\n\"1\": {\r\n    \"name\": \"Wall Switch Rule\",\r\n    \"lasttriggered\": \"2013-10-17T01:23:20\",\r\n    \"creationtime\": \"2013-10-10T21:11:45\",\r\n    \"timestriggered\": 27,\r\n    \"owner\": \"78H56B12BA\",\r\n    \"status\": \"enabled\",\r\n    \"conditions\": [\r\n        {\r\n            \"address\": \"/sensors/2/state/buttonevent\",\r\n            \"operator\": \"eq\",\r\n            \"value\": \"16\"\r\n        },\r\n        {\r\n            \"address\": \"/sensors/2/state/lastupdated\",\r\n            \"operator\": \"dx\"\r\n        }\r\n    ],\r\n    \"actions\": [\r\n        {\r\n            \"address\": \"/groups/0/action\",\r\n            \"method\": \"PUT\",\r\n            \"body\": {\r\n                \"scene\": \"S3\"\r\n            }\r\n        }\r\n    ]\r\n}}"
+						}
+					]
+				},
+				{
+					"name": "Rules Single",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/rules/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"rules",
+								"{{id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "4562dc2f-4f86-47bc-ab65-806ce231fcef",
+							"name": "Rules Single",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/rules/{{id}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"rules",
+										"{{id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\r\n    \"name\": \"Wall Switch Rule\",\r\n    \"owner\": \"ruleOwner\",\r\n    \"created\": \"2014-07-23T15:02:56\",\r\n    \"lasttriggered\": \"none\",\r\n    \"timestriggered\": 0,\r\n    \"status\": \"enabled\",\r\n    \"conditions\": [\r\n        {\r\n            \"address\": \"/sensors/2/state/buttonevent\",\r\n            \"operator\": \"eq\",\r\n            \"value\": \"16\"\r\n        },\r\n        {\r\n            \"address\": \"/sensors/2/state/lastupdated\",\r\n            \"operator\": \"dx\"\r\n        }\r\n    ],\r\n    \"actions\": [\r\n        {\r\n            \"address\": \"/groups/0/action\",\r\n            \"method\": \"PUT\",\r\n            \"body\": {\r\n                \"scene\": \"S3\"\r\n            }\r\n        }\r\n    ]\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Rules Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/rules",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"rules"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "bfd4efcc-d594-4b29-bb73-e39ba9e1e962",
+							"name": "Rules Create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{  \"name\":\"Wall Switch Rule\",\r\n   \"conditions\":[\r\n        {\"address\":\"/sensors/2/state/buttonevent\",\"operator\":\"eq\",\"value\":\"16\"}\r\n   ],\r\n   \"actions\":[\t\r\n        {\"address\":\"/groups/0/action\",\"method\":\"PUT\", \"body\":{\"scene\":\"S3\"}}\r\n]}"
+								},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/rules",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"rules"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[{\r\n    \"success\":{\"id\": \"3\"}\r\n}]"
+						}
+					]
+				},
+				{
+					"name": "Rules Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/rules/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"rules",
+								"{{id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "ab8293cc-ee94-4e8b-bd91-c0d2efc3ed33",
+							"name": "Rules Update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"actions\": [{\r\n            \"address\": \"/groups/0/action\",\r\n            \"method\": \"PUT\",\r\n            \"body\": {\r\n                \"scene\": \"S3\"\r\n            }\r\n    }]\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/rules/{{id}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"rules",
+										"{{id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[\r\n    {\r\n        \"success\": {\r\n            \"/rules/1/actions\": [\r\n                {\r\n                    \"address\": \"/groups/0/action\",\r\n                    \"method\": \"PUT\",\r\n                    \"body\": {\r\n                        \"scene\": \"S3\"\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    }\r\n]"
+						}
+					]
+				},
+				{
+					"name": "Rules Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/api/{{username}}/rules/{{id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{username}}",
+								"rules",
+								"{{id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "5d836d79-daaf-4187-a5a9-8538e404cb7c",
+							"name": "Rules Delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{url}}/api/{{username}}/rules/{{id}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"{{username}}",
+										"rules",
+										"{{id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[{\r\n\t\"success\": \"/rules/1 deleted.\"\r\n}]"
+						}
+					]
+				}
+			]
+		}
+	]
+}
