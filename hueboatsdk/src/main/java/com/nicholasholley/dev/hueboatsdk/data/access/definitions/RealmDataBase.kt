@@ -9,7 +9,7 @@ import io.realm.RealmResults
 import io.realm.kotlin.deleteFromRealm
 import java.util.*
 
-abstract class RealmDataMixin<T>: BaseData<T>
+abstract class RealmDataBase<T>: BaseData<T>
     where T : RealmModel {
 
     override var realm: Realm = Boat.getRealmInstance()
