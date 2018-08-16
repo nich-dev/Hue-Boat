@@ -10,4 +10,11 @@
     <dimen name="list_horizontal_padding">42dp</dimen>
     <dimen name="list_vertical_padding">24dp</dimen>
     <dimen name="title_top_margin">80dp</dimen>
+
+    <!--ROOMS-->
+    <dimen name="room_list_padding">6dp</dimen>
+    <dimen name="room_item_margin">4dp</dimen>
+    <dimen name="room_item_radius">12dp</dimen>
+    <dimen name="room_item_elevation">4dp</dimen>
+
 </resources>
