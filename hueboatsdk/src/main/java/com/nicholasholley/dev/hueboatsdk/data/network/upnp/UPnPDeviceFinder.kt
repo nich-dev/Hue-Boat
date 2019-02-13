@@ -27,8 +27,10 @@ import java.util.Collections
 import java.util.regex.Pattern
 import com.nicholasholley.dev.hueboatsdk.util.d
 
-import io.reactivex.Observable
-import io.reactivex.ObservableOnSubscribe
+import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.consumeEach
+import kotlinx.coroutines.channels.produce
+import kotlin.coroutines.CoroutineContext
 
 /**
  * Based on:
@@ -38,8 +40,16 @@ import io.reactivex.ObservableOnSubscribe
  * https://github.com/heb-dtc/SSDPDiscovery/blob/master/src/main/java/com/flo/upnpdevicedetector/UPnPDeviceFinder.java
  *
  * This class will find all UPnP devices with a response code of "IpBridge" as specified by the philips hue api guide
+ * RxJava is exchanged for Kotlin Coroutines
  */
-public class UPnPDeviceFinder @JvmOverloads constructor(IPV4: Boolean = true) {
+class UPnPDeviceFinder @JvmOverloads constructor(
+        private val deviceChannel: UPnPDeviceChannel? = null,
+        IPV4: Boolean = true
+) : CoroutineScope {
+
+    var job: Job = Job()
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.IO + job
 
     private val mInetDeviceAdr: InetAddress
 
@@ -57,43 +67,61 @@ public class UPnPDeviceFinder @JvmOverloads constructor(IPV4: Boolean = true) {
 
     }
 
-    fun observe(): Observable<UPnPData> {
-        return Observable.create(ObservableOnSubscribe { emitter ->
-            /**
-             * Called for each Observer that subscribes.
-             *
-             * @param emitter the safe emitter instance, never null
-             * @throws Exception on error
-             */
-            if (mSock == null) {
-                emitter.onError(Exception("Socket is null"))
-                return@ObservableOnSubscribe
-            }
-            try {
+    private fun open() {
+        job = Job()
+    }
+
+    fun close() {
+        job.cancel()
+    }
+
+    @ObsoleteCoroutinesApi
+    @ExperimentalCoroutinesApi
+    fun observe() {
+        if (job.isCancelled) open()
+        /**
+         * @param emitter the safe emitter instance, never null
+         * @throws Exception on error
+         */
+        if (mSock == null) {
+            deviceChannel?.onDeviceChannelError(Exception("Socket is null"))
+            return
+        }
+        val handler = CoroutineExceptionHandler { _, _ ->
+            mSock!!.close()
+            deviceChannel?.onDeviceChannelComplete()
+        }
+        launch(handler) {
+            runBlocking {
                 // Broadcast SSDP search messages
                 mSock!!.sendMulticastMsg()
-
-                // Listen to responses from network until the socket timeout
-                while (true) {
-                    "wait for dev. response".d()
-                    val dp = mSock!!.receiveMulticastMsg()
-                    var receivedString = String(dp.data)
-                    receivedString = receivedString.substring(0, dp.length)
-                    "found dev: $receivedString".d()
-                    if (receivedString.contains("IpBridge", true)){
-                        val device = UPnPDevice.getInstance(receivedString)
-                        if (device != null) {
-                            emitter.onNext(device)
+                val source = produce<UPnPDevice> {
+                    // Listen to responses from network until the socket timeout
+                    while (true) {
+                        "wait for dev. response".d()
+                        val dp = mSock!!.receiveMulticastMsg()
+                        var receivedString = String(dp.data)
+                        receivedString = receivedString.substring(0, dp.length)
+                        "found dev: $receivedString".d()
+                        if (receivedString.contains("IpBridge", true)){
+                            val device = UPnPDevice.getInstance(receivedString)
+                            if (device != null) {
+                                send(device)
+                            }
                         }
                     }
                 }
-            } catch (e: IOException) {
-                //sock timeout will get us out of the loop
-                mSock!!.close()
-                emitter.onComplete()
+                source.consumeEach { device ->
+                    deviceChannel?.onDeviceFound(device)
+                }
             }
-        })
+        }
+        try {
 
+        } catch (e: IOException) {
+            //sock timeout will get us out of the loop
+
+        }
     }
 
     ////////////////////////////////////////////////////////////////////////////////
