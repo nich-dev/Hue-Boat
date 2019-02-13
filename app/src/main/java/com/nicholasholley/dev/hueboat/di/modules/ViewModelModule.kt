@@ -1,7 +1,7 @@
 package com.dukeenergy.etrac.di.modules
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.nicholasholley.dev.hueboat.di.ViewModelFactory
 import com.nicholasholley.dev.hueboat.ui.MainVM
 import com.nicholasholley.dev.hueboat.ui.discovery.DiscoveryVM

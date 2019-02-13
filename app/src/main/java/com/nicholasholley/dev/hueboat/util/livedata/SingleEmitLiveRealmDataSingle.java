@@ -1,10 +1,10 @@
 package com.nicholasholley.dev.hueboat.util.livedata;
 
-import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.Observer;
-import android.support.annotation.MainThread;
-import android.support.annotation.Nullable;
-import com.nicholasholley.dev.hueboat.util.livedata.LiveRealmDataSingle;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
+import androidx.annotation.MainThread;
+import androidx.annotation.Nullable;
+
 import com.nicholasholley.dev.hueboat.util.log.Log;
 
 import org.jetbrains.annotations.NotNull;

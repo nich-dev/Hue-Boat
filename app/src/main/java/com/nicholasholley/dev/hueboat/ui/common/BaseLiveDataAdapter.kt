@@ -1,9 +1,9 @@
 package com.nicholasholley.dev.hueboat.ui.common
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 
 
-abstract class BaseLiveDataAdapter<T, VH: RecyclerView.ViewHolder> (): RecyclerView.Adapter<VH>(){
+abstract class BaseLiveDataAdapter<T, VH: androidx.recyclerview.widget.RecyclerView.ViewHolder> (): androidx.recyclerview.widget.RecyclerView.Adapter<VH>(){
     var items: List<T>? = null
 
     open fun setItemsList(

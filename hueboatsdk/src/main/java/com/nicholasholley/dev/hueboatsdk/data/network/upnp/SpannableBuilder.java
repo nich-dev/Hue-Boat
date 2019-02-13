@@ -2,7 +2,7 @@ package com.nicholasholley.dev.hueboatsdk.data.network.upnp;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.DrawableRes;
+import androidx.annotation.DrawableRes;
 import android.text.SpannableStringBuilder;
 import android.text.style.CharacterStyle;
 import android.text.style.ImageSpan;

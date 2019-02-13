@@ -5,19 +5,17 @@ import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
 import com.nicholasholley.dev.hueboatsdk.data.models.HueScene
-import com.nicholasholley.dev.hueboatsdk.data.models.wrapper.HueSceneWrapper
+import com.nicholasholley.dev.hueboatsdk.data.models.HueSceneWrapper
 import java.lang.reflect.Type
-import javax.inject.Inject
 
-class SceneSerializer @Inject constructor(
+class SceneSerializer constructor(
         val gson: Gson
 ) : JsonDeserializer<HueSceneWrapper> {
     override fun deserialize(json: JsonElement?, typeOfT: Type?, context: JsonDeserializationContext?): HueSceneWrapper =
             HueSceneWrapper().apply {
-                scenes = HashMap()
                 json?.asJsonObject?.entrySet()?.forEach { item ->
                     entryToHue(item)?.let {
-                        scenes?.put(item.key, it)
+                        put(item.key, it)
                     }
                 }
             }

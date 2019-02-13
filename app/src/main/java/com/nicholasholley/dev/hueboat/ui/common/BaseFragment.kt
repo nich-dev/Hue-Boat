@@ -1,7 +1,7 @@
 package com.nicholasholley.dev.hueboat.ui.common
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import com.nicholasholley.dev.hueboat.util.Constants
 
 abstract class BaseFragment : Fragment() {

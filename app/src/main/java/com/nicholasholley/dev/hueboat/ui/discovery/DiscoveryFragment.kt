@@ -1,10 +1,10 @@
 package com.nicholasholley.dev.hueboat.ui.discovery
 
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,7 +34,7 @@ class DiscoveryFragment: BaseFragment(), MarkForInjection {
     }
 
     lateinit var uPnPAdapter: UPnPDeviceAdapter
-    lateinit var list: RecyclerView
+    lateinit var list: androidx.recyclerview.widget.RecyclerView
     lateinit var spinnyBoi: ProgressBar
     private var animateState: Boolean = true
 
@@ -42,9 +42,9 @@ class DiscoveryFragment: BaseFragment(), MarkForInjection {
         animateState = false
         val parent = inflater.inflate(R.layout.fragment_discovery, container, false)
         uPnPAdapter = UPnPDeviceAdapter(context!!)
-        list = parent.findViewById<RecyclerView>(R.id.list).apply {
+        list = parent.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.list).apply {
             adapter = uPnPAdapter
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
         }
         spinnyBoi = parent.findViewById<ProgressBar>(R.id.spinner)
         return parent

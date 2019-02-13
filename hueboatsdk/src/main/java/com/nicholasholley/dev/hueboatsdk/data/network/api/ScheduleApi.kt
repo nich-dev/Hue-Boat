@@ -1,47 +1,39 @@
 package com.nicholasholley.dev.hueboatsdk.data.network.api
 
 import com.nicholasholley.dev.hueboatsdk.data.models.HueSchedule
-import com.nicholasholley.dev.hueboatsdk.data.models.wrapper.HueScheduleWrapper
-import com.nicholasholley.dev.hueboatsdk.data.network.api._BaseApi.Companion.BASE_PATH
-import com.nicholasholley.dev.hueboatsdk.data.network.api._BaseApi.Companion.ID_REPLACEMENT
-import com.nicholasholley.dev.hueboatsdk.data.network.api._BaseApi.Companion.USERNAME_REPLACEMENT
+import com.nicholasholley.dev.hueboatsdk.data.models.HueScheduleWrapper
 import com.nicholasholley.dev.hueboatsdk.data.network.json.SimpleResponse
 import retrofit2.Call
 import retrofit2.http.*
 
 interface ScheduleApi {
-    @GET(SCHEDULES_ALL)
+    @GET(ApiPaths.Schedule.ALL)
     fun getAll(
-            @Path(value = USERNAME_REPLACEMENT) username: String?
+            @Path(value = ApiPaths.Base.USERNAME_REPLACEMENT) username: String?
     ): Call<HueScheduleWrapper>
 
-    @GET(SCHEDULES_SINGLE)
+    @GET(ApiPaths.Schedule.SINGLE)
     fun get(
-            @Path(value = USERNAME_REPLACEMENT) username: String?,
-            @Path(value = ID_REPLACEMENT) id: Long = 0L
+            @Path(value = ApiPaths.Base.USERNAME_REPLACEMENT) username: String?,
+            @Path(value = ApiPaths.Base.ID_REPLACEMENT) id: Long = 0L
     ): Call<HueSchedule>
 
-    @POST(SCHEDULES_ALL)
+    @POST(ApiPaths.Schedule.ALL)
     fun createScedule(
-            @Path(value = USERNAME_REPLACEMENT) username: String?,
+            @Path(value = ApiPaths.Base.USERNAME_REPLACEMENT) username: String?,
             @Body hueSchedule: HueSchedule
     ): Call<SimpleResponse>
 
-    @PUT(SCHEDULES_SINGLE)
+    @PUT(ApiPaths.Schedule.SINGLE)
     fun update(
-            @Path(value = USERNAME_REPLACEMENT) username: String?,
-            @Path(value = ID_REPLACEMENT) id: Long = 0L,
+            @Path(value = ApiPaths.Base.USERNAME_REPLACEMENT) username: String?,
+            @Path(value = ApiPaths.Base.ID_REPLACEMENT) id: Long = 0L,
             @Body hueSchedule: HueSchedule
     ): Call<List<SimpleResponse>>
 
-    @DELETE(SCHEDULES_SINGLE)
+    @DELETE(ApiPaths.Schedule.SINGLE)
     fun delete(
-            @Path(value = USERNAME_REPLACEMENT) username: String?,
-            @Path(value = ID_REPLACEMENT) id: Long = 0L
+            @Path(value = ApiPaths.Base.USERNAME_REPLACEMENT) username: String?,
+            @Path(value = ApiPaths.Base.ID_REPLACEMENT) id: Long = 0L
     ): Call<List<SimpleResponse>>
-
-    companion object {
-        private const val SCHEDULES_ALL = "$BASE_PATH/schedules"
-        private const val SCHEDULES_SINGLE = "$SCHEDULES_ALL/{$ID_REPLACEMENT}"
-    }
 }

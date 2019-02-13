@@ -1,17 +1,20 @@
 package com.nicholasholley.dev.hueboatsdk.data.models
 
-import com.google.gson.annotations.Expose
-import io.realm.RealmObject
-import io.realm.annotations.PrimaryKey
+data class HueSensor(
+        var id:                 Long = 0L,
+        var name:               String? = null,
+        var modelid:            String? = null,
+        var swversion:          String? = null,
+        var type:               String? = null,
+        var uniqueid:           String? = null,
+        var manufacturername:   String? = null,
+        var recycle:            Boolean? = null,
+        var config:             HueSensorConfig? = null
+)
 
-open class HueSensor(
-        @PrimaryKey var id:             Long = 0L,
-        @Expose var name:               String? = null,
-        @Expose var modelid:            String? = null,
-        @Expose var swversion:          String? = null,
-        @Expose var type:               String? = null,
-        @Expose var uniqueid:           String? = null,
-        @Expose var manufacturername:   String? = null,
-        @Expose var recycle:            Boolean? = null,
-        @Expose var config:             HueSensorConfig? = null
-): RealmObject()
+data class HueSensorConfig(
+        var id:         Long = 0L,
+        var on:         Boolean? = null,
+        var reachable:  Boolean? = null,
+        var battery:    Int? = null
+)

@@ -1,6 +1,6 @@
 package com.nicholasholley.dev.hueboat.util.livedata
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import io.realm.RealmChangeListener
 import io.realm.RealmModel
 import io.realm.RealmResults

@@ -1,7 +1,7 @@
 package com.nicholasholley.dev.hueboat.ui.discovery
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +18,7 @@ import java.util.*
  */
 class UPnPDeviceAdapter(
         val context: Context
-): RecyclerView.Adapter<UPnPDeviceAdapter.ViewHolder>() {
+): androidx.recyclerview.widget.RecyclerView.Adapter<UPnPDeviceAdapter.ViewHolder>() {
     interface ItemClickListener {
         fun onClick(item: UPnPData, position: Int)
     }
@@ -68,7 +68,7 @@ class UPnPDeviceAdapter(
         holder.initialize(getItem(position))
     }
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
         var friendlyName: TextView = view.findViewById(R.id.friendly_name) as TextView
         var location: TextView = view.findViewById(R.id.location) as TextView
         lateinit var data: UPnPData

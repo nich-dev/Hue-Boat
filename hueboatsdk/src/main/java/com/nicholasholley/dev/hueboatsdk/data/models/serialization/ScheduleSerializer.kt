@@ -5,19 +5,17 @@ import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
 import com.nicholasholley.dev.hueboatsdk.data.models.HueSchedule
-import com.nicholasholley.dev.hueboatsdk.data.models.wrapper.HueScheduleWrapper
+import com.nicholasholley.dev.hueboatsdk.data.models.HueScheduleWrapper
 import java.lang.reflect.Type
-import javax.inject.Inject
 
-class ScheduleSerializer @Inject constructor(
+class ScheduleSerializer constructor(
         val gson: Gson
 ) : JsonDeserializer<HueScheduleWrapper> {
     override fun deserialize(json: JsonElement?, typeOfT: Type?, context: JsonDeserializationContext?): HueScheduleWrapper =
         HueScheduleWrapper().apply {
-            schedules = HashMap()
             json?.asJsonObject?.entrySet()?.forEach { item ->
                 entryToHue(item)?.let {
-                    schedules?.put(item.key, it)
+                    put(item.key, it)
                 }
             }
         }
