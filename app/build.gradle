@@ -57,6 +57,8 @@ androidExtensions {
 dependencies {
     implementation fileTree(include: ["*.jar"], dir: "libs")
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
     // google ui support
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'com.google.android.material:material:1.0.0'
@@ -79,8 +81,8 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:$dagger_version"
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
     // Networking
-    implementation "com.squareup.okhttp3:okhttp:3.10.0"
-    implementation "com.google.code.gson:gson:2.8.2"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.google.code.gson:gson:$gson_version"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     // DATA

@@ -2,7 +2,7 @@ package com.nicholasholley.dev.hueboat.data.models.converters
 
 import androidx.room.TypeConverter
 import com.nicholasholley.dev.hueboatsdk.Boat
-import com.nicholasholley.dev.hueboatsdk.data.models.HueLightStateWrapper
+import com.nicholasholley.dev.hueboatsdk.models.HueLightStateWrapper
 
 class LightStateWrapperConverter {
     @TypeConverter

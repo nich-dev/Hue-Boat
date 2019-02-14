@@ -1,14 +1,17 @@
 package com.nicholasholley.dev.hueboat.data.models
 
+import androidx.room.Dao
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.nicholasholley.dev.hueboat.data.models.converters.CommandConverter
-import com.nicholasholley.dev.hueboatsdk.data.models.HueCommand
+import com.nicholasholley.dev.hueboatsdk.models.HueCommand
 
 @Entity
 @TypeConverters(CommandConverter::class)
 data class Schedule(
-    var id:             Long = 0L,
+    @PrimaryKey
+    var id:             String,
     var name:           String? = null,
     var description:    String? = null,
     var localtime:      String? = null,
@@ -18,5 +21,5 @@ data class Schedule(
     var command:        HueCommand? = null
 )
 
+@Dao
 abstract class ScheduleDao : BaseDao<Schedule>
-

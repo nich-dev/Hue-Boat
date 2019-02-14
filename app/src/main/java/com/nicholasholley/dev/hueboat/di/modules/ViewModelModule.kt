@@ -1,4 +1,4 @@
-package com.dukeenergy.etrac.di.modules
+package com.nicholasholley.dev.hueboat.di.modules
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

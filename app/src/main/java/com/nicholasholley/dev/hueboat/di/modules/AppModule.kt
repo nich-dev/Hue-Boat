@@ -1,4 +1,4 @@
-package com.dukeenergy.etrac.di.modules
+package com.nicholasholley.dev.hueboat.di.modules
 
 import android.app.Application
 import android.content.Context
@@ -7,7 +7,6 @@ import com.nicholasholley.dev.hueboat.R
 import com.nicholasholley.dev.hueboat.util.rx.SchedulersFacade
 import dagger.Module
 import dagger.Provides
-import io.realm.Realm
 import javax.inject.Singleton
 
 /***
@@ -22,11 +21,6 @@ class AppModule {
     @Provides
     @Singleton
     fun providesAppContext(app: Application): Context = app
-
-    @Provides
-    fun provideRealm(): Realm {
-        return Realm.getDefaultInstance()
-    }
 
     @Provides
     @Singleton

@@ -1,15 +1,14 @@
 package com.nicholasholley.dev.hueboat.ui.discovery
 
 import android.content.Context
-import androidx.recyclerview.widget.RecyclerView
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.nicholasholley.dev.hueboat.R
-import com.nicholasholley.dev.hueboatsdk.data.network.upnp.UPnPData
-import com.nicholasholley.dev.hueboatsdk.data.network.upnp.UPnPDeviceComparator
+import com.nicholasholley.dev.hueboatsdk.network.upnp.UPnPData
+import com.nicholasholley.dev.hueboatsdk.network.upnp.UPnPDeviceComparator
 import java.util.*
 
 

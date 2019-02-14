@@ -8,6 +8,8 @@ buildscript {
     ext.coroutines_version = '1.0.1'
     ext.aac_version = '2.0.0'
     ext.room_version = '2.1.0-alpha04'
+    ext.okhttp_version = '3.10.0'
+    ext.gson_version = '2.8.2'
     repositories {
         google()
         jcenter()

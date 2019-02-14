@@ -1,0 +1,23 @@
+package com.nicholasholley.dev.hueboatsdk.models.serialization
+
+import com.google.gson.Gson
+import com.google.gson.JsonDeserializationContext
+import com.google.gson.JsonDeserializer
+import com.google.gson.JsonElement
+import com.nicholasholley.dev.hueboatsdk.models.HueScene
+import com.nicholasholley.dev.hueboatsdk.models.HueSceneWrapper
+import java.lang.reflect.Type
+
+class SceneSerializer constructor(
+        val gson: Gson
+) : JsonDeserializer<HueSceneWrapper> {
+    override fun deserialize(json: JsonElement?, typeOfT: Type?, context: JsonDeserializationContext?): HueSceneWrapper =
+            HueSceneWrapper().apply {
+                json?.asJsonObject?.entrySet()?.forEach { item ->
+                    put(item.key, entryToHue(item))
+                }
+            }
+
+    private fun entryToHue(obj: Map.Entry<String, JsonElement>): HueScene =
+                gson.fromJson(obj.value, HueScene::class.java).apply { id = obj.key }
+}

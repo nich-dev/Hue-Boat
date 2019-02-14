@@ -2,19 +2,18 @@ package com.nicholasholley.dev.hueboat.data.models.converters
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson
-import com.nicholasholley.dev.hueboatsdk.models.HueState
 
-class StateConverter {
+class LongListConverter {
     private val gson = Gson()
 
     @TypeConverter
-    fun fromString(value: String?): HueState? =
+    fun fromString(value: String?): List<Long>? =
             value?.let {
-                gson.fromJson(it, HueState::class.java)
+                gson.fromJson(it, listOf<Long>()::class.java)
             }
 
     @TypeConverter
-    fun toObject(list: HueState?): String? =
+    fun toObject(list: List<Long>?): String? =
             list?.let {
                 gson.toJson(it)
             }

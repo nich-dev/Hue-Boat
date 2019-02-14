@@ -1,16 +1,19 @@
 package com.nicholasholley.dev.hueboat.data.models
 
+import androidx.room.Dao
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
-import com.nicholasholley.dev.hueboat.data.models.converters.ActionConverter
-import com.nicholasholley.dev.hueboat.data.models.converters.ConditionConverter
-import com.nicholasholley.dev.hueboatsdk.data.models.HueAction
-import com.nicholasholley.dev.hueboatsdk.data.models.HueCondition
+import com.nicholasholley.dev.hueboat.data.models.converters.ActionListConverter
+import com.nicholasholley.dev.hueboat.data.models.converters.ConditionListConverter
+import com.nicholasholley.dev.hueboatsdk.models.HueAction
+import com.nicholasholley.dev.hueboatsdk.models.HueCondition
 
 @Entity
-@TypeConverters(ActionConverter::class, ConditionConverter::class)
+@TypeConverters(ActionListConverter::class, ConditionListConverter::class)
 data class Rule(
-        var id:             Long = 0L,
+        @PrimaryKey
+        var id:             String,
         var name:           String? = null,
         var lasttriggered:  String? = null,
         var creationtime:   String? = null,
@@ -20,6 +23,5 @@ data class Rule(
         var actions:        List<HueAction> = listOf()
 )
 
+@Dao
 abstract class RuleDao : BaseDao<Rule>
-
-
