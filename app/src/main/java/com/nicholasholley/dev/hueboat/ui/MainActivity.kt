@@ -1,12 +1,12 @@
 package com.nicholasholley.dev.hueboat.ui
 
 import android.annotation.SuppressLint
-import androidx.lifecycle.ViewModelProvider
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.nicholasholley.dev.hueboat.R
+import com.nicholasholley.dev.hueboat.ui.common.CoroutineActivity
 import com.nicholasholley.dev.hueboat.ui.discovery.DiscoveryKey
 import com.zhuinden.simplestack.BackstackDelegate
 import com.zhuinden.simplestack.HistoryBuilder
@@ -17,7 +17,7 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), HasSupportFragmentInjector, StateChanger {
+class MainActivity : CoroutineActivity(), HasSupportFragmentInjector, StateChanger {
     val navigationController: NavigationController by lazy {
         NavigationController(supportFragmentManager)
     }

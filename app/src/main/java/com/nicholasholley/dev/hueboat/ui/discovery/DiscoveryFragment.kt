@@ -3,8 +3,6 @@ package com.nicholasholley.dev.hueboat.ui.discovery
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +11,7 @@ import com.github.florent37.kotlin.pleaseanimate.PleaseAnim
 import com.github.florent37.kotlin.pleaseanimate.please
 import com.nicholasholley.dev.hueboat.R
 import com.nicholasholley.dev.hueboat.di.MarkForInjection
-import com.nicholasholley.dev.hueboat.ui.common.BaseFragment
+import com.nicholasholley.dev.hueboat.ui.common.CoroutineFragment
 import com.nicholasholley.dev.hueboat.util.Constants
 import com.nicholasholley.dev.hueboat.util.ext.delay
 import com.nicholasholley.dev.hueboat.util.ext.log
@@ -25,7 +23,7 @@ import javax.inject.Inject
  * A fragment that shows discovery Bridge options
  */
 
-class DiscoveryFragment: BaseFragment(), MarkForInjection {
+class DiscoveryFragment: CoroutineFragment(), MarkForInjection {
     //injection
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     val vm: DiscoveryVM by lazy {

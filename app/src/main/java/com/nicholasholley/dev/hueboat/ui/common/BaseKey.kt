@@ -1,25 +1,18 @@
 package com.nicholasholley.dev.hueboat.ui.common
 
 import android.os.Bundle
-import com.nicholasholley.dev.hueboat.R
-import com.nicholasholley.dev.hueboat.ui.common.BaseFragment
-import com.nicholasholley.dev.hueboat.util.Constants
-import paperparcel.PaperParcelable
+import android.os.Parcelable
+import androidx.fragment.app.Fragment
 
-abstract class BaseKey: PaperParcelable {
+abstract class BaseKey : Parcelable {
     val fragmentTag: String
         get() = toString()
 
-    fun newFragment(): BaseFragment {
-        val fragment = createFragment()
-        var bundle: Bundle? = fragment.arguments
-        if (bundle == null) {
-            bundle = Bundle()
+    fun newFragment(): Fragment = createFragment().apply {
+        arguments = (arguments ?: Bundle()).also { bundle ->
+            bundle.putParcelable("KEY", this@BaseKey)
         }
-        bundle.putParcelable(Constants.NAV_KEY, this)
-        fragment.arguments = bundle
-        return fragment
     }
 
-    protected abstract fun createFragment(): BaseFragment
+    protected abstract fun createFragment(): Fragment
 }
