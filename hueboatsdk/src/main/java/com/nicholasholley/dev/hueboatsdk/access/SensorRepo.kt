@@ -15,7 +15,7 @@ interface SensorRepo {
     fun delete(id: String): Deferred<List<SimpleResponse>>
 }
 
-class RepoAccess(
+class SensorAccess(
         private val api: SensorApi,
         private val username: String
 ) : SensorRepo {

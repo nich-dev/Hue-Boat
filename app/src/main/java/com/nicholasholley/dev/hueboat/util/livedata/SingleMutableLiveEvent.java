@@ -16,6 +16,7 @@
 
 package com.nicholasholley.dev.hueboat.util.livedata;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
@@ -40,9 +41,8 @@ public class SingleMutableLiveEvent<T> extends MutableLiveData<T> {
 
     private final AtomicBoolean mPending = new AtomicBoolean(false);
 
-    @MainThread
-    public void observe(LifecycleOwner owner, final Observer<T> observer) {
-
+    @Override
+    public void observe(@NonNull LifecycleOwner owner, @NonNull final Observer<? super T> observer) {
         if (hasActiveObservers()) {
             Log.Companion.w("Multiple observers registered but only one will be notified of changes.");
         }

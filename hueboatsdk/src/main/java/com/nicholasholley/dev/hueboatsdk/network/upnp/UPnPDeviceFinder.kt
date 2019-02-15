@@ -73,8 +73,6 @@ class UPnPDeviceFinder @JvmOverloads constructor(
         job.cancel()
     }
 
-    @ObsoleteCoroutinesApi
-    @ExperimentalCoroutinesApi
     fun observe() {
         if (job.isCancelled) open()
         /**

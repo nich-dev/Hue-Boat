@@ -16,6 +16,7 @@ import com.nicholasholley.dev.hueboat.di.MarkForInjection
 import com.nicholasholley.dev.hueboat.ui.common.BaseFragment
 import com.nicholasholley.dev.hueboat.util.Constants
 import com.nicholasholley.dev.hueboat.util.ext.delay
+import com.nicholasholley.dev.hueboat.util.ext.log
 import com.nicholasholley.dev.hueboat.util.ext.observe
 import kotlinx.android.synthetic.main.fragment_discovery.*
 import javax.inject.Inject
@@ -53,13 +54,11 @@ class DiscoveryFragment: BaseFragment(), MarkForInjection {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         bindToVM()
-        delay(2000L) {
-            vm.fragmentState.value = State.SELECT
-        }
     }
 
     override fun bindToVM() {
         vm.uPnPDevices.observe(this) {
+            "wolololo: ${it.toString()}".log()
             it?.let { uPnPDataList ->
                 if (uPnPDataList.size > 0) {
                     vm.fragmentState.value = State.SELECT
