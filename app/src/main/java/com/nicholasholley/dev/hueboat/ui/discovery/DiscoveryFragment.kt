@@ -1,12 +1,12 @@
 package com.nicholasholley.dev.hueboat.ui.discovery
 
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import com.github.florent37.kotlin.pleaseanimate.PleaseAnim
 import com.github.florent37.kotlin.pleaseanimate.please
 import com.nicholasholley.dev.hueboat.R
@@ -14,8 +14,8 @@ import com.nicholasholley.dev.hueboat.di.MarkForInjection
 import com.nicholasholley.dev.hueboat.ui.common.CoroutineFragment
 import com.nicholasholley.dev.hueboat.util.Constants
 import com.nicholasholley.dev.hueboat.util.ext.delay
-import com.nicholasholley.dev.hueboat.util.ext.log
 import com.nicholasholley.dev.hueboat.util.ext.observe
+import com.nicholasholley.dev.hueboatsdk.network.upnp.UPnPData
 import kotlinx.android.synthetic.main.fragment_discovery.*
 import javax.inject.Inject
 
@@ -23,7 +23,7 @@ import javax.inject.Inject
  * A fragment that shows discovery Bridge options
  */
 
-class DiscoveryFragment: CoroutineFragment(), MarkForInjection {
+class DiscoveryFragment: CoroutineFragment(), MarkForInjection, UPnPDeviceAdapter.DeviceClickListener {
     //injection
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     val vm: DiscoveryVM by lazy {
@@ -32,7 +32,7 @@ class DiscoveryFragment: CoroutineFragment(), MarkForInjection {
         )
     }
 
-    lateinit var uPnPAdapter: UPnPDeviceAdapter
+    private val uPnPAdapter: UPnPDeviceAdapter = UPnPDeviceAdapter(this)
     lateinit var list: androidx.recyclerview.widget.RecyclerView
     lateinit var spinnyBoi: ProgressBar
     private var animateState: Boolean = true
@@ -40,7 +40,6 @@ class DiscoveryFragment: CoroutineFragment(), MarkForInjection {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         animateState = false
         val parent = inflater.inflate(R.layout.fragment_discovery, container, false)
-        uPnPAdapter = UPnPDeviceAdapter(context!!)
         list = parent.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.list).apply {
             adapter = uPnPAdapter
             layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
@@ -56,9 +55,8 @@ class DiscoveryFragment: CoroutineFragment(), MarkForInjection {
 
     override fun bindToVM() {
         vm.uPnPDevices.observe(this) {
-            "wolololo: ${it.toString()}".log()
             it?.let { uPnPDataList ->
-                if (uPnPDataList.size > 0) {
+                if (uPnPDataList.isNotEmpty()) {
                     vm.fragmentState.value = State.SELECT
                     uPnPDataList.last().let { uPnPAdapter.add(it) }
                 } else {
@@ -134,6 +132,10 @@ class DiscoveryFragment: CoroutineFragment(), MarkForInjection {
     private fun setSelectText() {
         title.setText(R.string.bridge_selection)
         body.setText(R.string.choose_bridge)
+    }
+
+    override fun onClick(item: UPnPData, position: Int) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     enum class State { SEARCH, SELECT, LINK, SUCCESS, FAIL }

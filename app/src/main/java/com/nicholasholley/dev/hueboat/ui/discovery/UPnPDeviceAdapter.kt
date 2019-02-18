@@ -1,6 +1,5 @@
 package com.nicholasholley.dev.hueboat.ui.discovery
 
-import android.content.Context
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
@@ -11,49 +10,34 @@ import com.nicholasholley.dev.hueboatsdk.network.upnp.UPnPData
 import com.nicholasholley.dev.hueboatsdk.network.upnp.UPnPDeviceComparator
 import java.util.*
 
-
-/**
- * Created by nhunc on 3/11/2018.
- */
 class UPnPDeviceAdapter(
-        val context: Context
+        private val listener: DeviceClickListener? = null
 ): androidx.recyclerview.widget.RecyclerView.Adapter<UPnPDeviceAdapter.ViewHolder>() {
-    interface ItemClickListener {
+    interface DeviceClickListener {
         fun onClick(item: UPnPData, position: Int)
     }
 
-    private val mComparator = UPnPDeviceComparator()
-
-    private var inflater: LayoutInflater? = null
-    private var mItems: ArrayList<UPnPData> = ArrayList()
-    private var mListener: ItemClickListener? = null
-
-    fun setItemClickListener(listener: ItemClickListener) {
-        mListener = listener
-    }
+    private val comparator = UPnPDeviceComparator()
+    private var items: MutableList<UPnPData> = mutableListOf()
 
     override fun getItemCount(): Int {
-        return mItems.size
-    }
-
-    fun getItem(position: Int): UPnPData {
-        return mItems[position]
+        return items.size
     }
 
     fun clear() {
-        val count = mItems.size
-        mItems.clear()
+        val count = items.size
+        items.clear()
         notifyItemRangeRemoved(0, count)
     }
 
     fun add(item: UPnPData) {
-        val index = Collections.binarySearch(mItems, item, mComparator)
+        val index = Collections.binarySearch(items, item, comparator)
         if (index < 0) {
             val position = -index - 1
-            mItems.add(position, item)
+            items.add(position, item)
             notifyItemInserted(position)
         } else {
-            mItems[index] = item
+            items[index] = item
             notifyItemChanged(index)
         }
     }
@@ -64,15 +48,15 @@ class UPnPDeviceAdapter(
         }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.initialize(getItem(position))
+        holder.bind(items[position])
     }
 
     inner class ViewHolder(view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
-        var friendlyName: TextView = view.findViewById(R.id.friendly_name) as TextView
-        var location: TextView = view.findViewById(R.id.location) as TextView
+        private val friendlyName: TextView = view.findViewById(R.id.friendly_name) as TextView
+        private val location: TextView = view.findViewById(R.id.location) as TextView
         lateinit var data: UPnPData
 
-        fun initialize(item: UPnPData) {
+        fun bind(item: UPnPData) {
             data = item
             friendlyName.text = item.scrubbedFriendlyName?.let {
                 if (TextUtils.isEmpty(it)) "[unnamed]" else it.split("(")[0]
@@ -82,8 +66,8 @@ class UPnPDeviceAdapter(
 
         fun click(view: View) {
             val position = adapterPosition
-            if (mListener != null) {
-                mListener!!.onClick(mItems[position], position)
+            if (listener != null) {
+                listener!!.onClick(items[position], position)
                 notifyItemChanged(position)
             }
         }

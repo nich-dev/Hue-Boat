@@ -45,7 +45,7 @@ class MainActivity : CoroutineActivity(), HasSupportFragmentInjector, StateChang
     /***
      * Handle global navigation actions
      */
-    fun setupBackstack(savedInstanceState: Bundle?) {
+    private fun setupBackstack(savedInstanceState: Bundle?) {
         backstackDelegate.onCreate(
                 savedInstanceState,
                 lastCustomNonConfigurationInstance,
