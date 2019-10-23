@@ -90,10 +90,10 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-rxjava2:$room_version"
     // MISC
-    implementation "com.github.Zhuinden:simple-stack:1.13.1"
-    implementation "nz.bradcampbell:paperparcel:2.0.4"
-    implementation "nz.bradcampbell:paperparcel-kotlin:2.0.4"
-    kapt "nz.bradcampbell:paperparcel-compiler:2.0.4"
+    implementation "com.github.Zhuinden:simple-stack:2.1.2"
+    implementation "nz.bradcampbell:paperparcel:2.0.8"
+    implementation "nz.bradcampbell:paperparcel-kotlin:2.0.8"
+    kapt "nz.bradcampbell:paperparcel-compiler:2.0.8"
     // Logging
     implementation "com.jakewharton.timber:timber:4.6.0"
     implementation "net.ypresto.timbertreeutils:timbertreeutils:1.0.0"

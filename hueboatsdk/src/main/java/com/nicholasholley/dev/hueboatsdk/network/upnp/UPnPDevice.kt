@@ -106,7 +106,7 @@ class UPnPDevice private constructor() : UPnPData {
             throw IOException("Unexpected code " + response)
         }
 
-        rawXml = response.body()!!.string()
+        rawXml = response.body!!.string()
 
         val dbf = DocumentBuilderFactory.newInstance()
         val db = dbf.newDocumentBuilder()
